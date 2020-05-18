@@ -1,0 +1,29 @@
+{
+  "name": "@pangenerator/utils",
+  "version": "0.0.2",
+  "description": "A collection of snippets for creative coding",
+  "main": "utils.js",
+  "scripts": {
+    "test": "mocha --reporter=list --experimental-modules"
+  },
+  "type": "module",
+  "private": false,
+  "keywords": [
+    "util",
+    "tool",
+    "snippet"
+  ],
+  "author": "Krzysztof Golinski <kgolinski@pangenerator.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panGenerator/utils.git"
+  },
+  "license": "(MIT OR Apache-2.0)",
+  "devDependencies": {
+    "mocha": "^7.1.2",
+    "np": "^6.2.3"
+  },
+  "dependencies": {
+    "nyc": "^15.0.1"
+  }
+}
