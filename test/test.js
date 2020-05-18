@@ -95,14 +95,54 @@ describe('Utils', function () {
   })
   describe('#randomName()', function () {
     it('should return string', function () {
-      const length = 8
-      const name = randomName(length)
-      assert.equal(typeof (name), 'string')
+      assert.equal(typeof (randomName(3)), 'string')
     })
     it('should return string with provided length', function () {
       const length = 8
       const name = randomName(length)
       assert.equal(name.length, length)
+    })
+  })
+  describe('#timestampName()', function () {
+    it('should return string', function () {
+      assert.equal(typeof (timestampName()), 'string')
+    })
+    it('should return 19 characters', function () {
+      const name = timestampName()
+      assert.equal(name.length, 19)
+    })
+  })
+  describe('#randomIndex()', function () {
+    it('should return a random number between 0 and N', function () {
+      const r = randomIndex(10)
+      assert(r >= 0 && r < 10)
+    })
+    it('should return an integer', function () {
+      const r = randomIndex(5)
+      assert.equal(r % 1, 0)
+    })
+  })
+  describe('#shuffleArray()', function () {
+    it('should return array with the same length', function () {
+      assert.equal(shuffleArray([1, 2, 3]).length, 3)
+    })
+  })
+  describe('#lerpColor()', function () {
+    it('should return lerped color', function () {
+      assert.equal(lerpColor('#ff0000', '#00ff00', 0.4), '#996600')
+    })
+    it('should return a string', function () {
+      assert.equal(typeof (lerpColor('#ff0000', '#00ff00', 0.9)), 'string')
+    })
+    it('should return hex color', function () {
+      assert.equal(lerpColor('#ff0000', '#00ffff', 0.4).length, 7)
+      assert.equal(lerpColor('#ff0000', '#ffff00', 0.4).charAt(0), '#')
+    })
+  })
+
+  describe('#precision', function () {
+    it('should return a number with specified digits after decimal point', function () {
+      assert.equal(precision(10.13432234324324, 2), 10.13)
     })
   })
 })
