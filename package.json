@@ -4,9 +4,13 @@
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
-    "test": "mocha --reporter=list --experimental-modules"
+    "test": "mocha --reporter=list --experimental-modules",
+    "np":"np"
   },
   "type": "module",
+  "files": [
+    "utils.js"
+  ],
   "private": false,
   "keywords": [
     "util",
