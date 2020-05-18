@@ -1,5 +1,5 @@
 // import { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, dist, square, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision } from '../utils.js'
-const { map, clamp, random, randomDir, lerp, lerp3 } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -46,6 +46,16 @@ describe('Utils', function () {
   describe('#lerp3()', function () {
     it('should interpolate beetween two points in 3D', function () {
       assert.deepEqual(lerp3({ x: 0, y: 100, z: 200 }, { x: 100, y: 50, z: 100 }, 0.5), { x: 50, y: 75, z: 150 })
+    })
+  })
+  describe('#lerpedPoints()', function () {
+    it('should return n points between supplied points', function () {
+      assert.deepEqual(lerpedPoints({ x: 0, y: 100, z: 200 }, { x: 300, y: 400, z: 500 }, 2), [{ x: 100, y: 200, z: 300 }, { x: 200, y: 300, z: 400 }])
+    })
+  })
+  describe('#square()', function () {
+    it('should return provided number squared', function () {
+      assert.equal(square(2), 4)
     })
   })
 })

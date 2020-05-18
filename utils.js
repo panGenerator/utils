@@ -47,12 +47,12 @@
     return points
   }
 
-  function dist (A, B) {
-    return Math.sqrt(square(B.x - A.x) + square(B.y - A.y) + square(B.z - A.z))
-  }
-
   function square (a) {
     return a * a
+  }
+
+  function dist (A, B) {
+    return Math.sqrt(square(B.x - A.x) + square(B.y - A.y) + square(B.z - A.z))
   }
 
   function norm (value, start, stop) {
