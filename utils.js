@@ -52,7 +52,7 @@
   }
 
   function dist (A, B) {
-    return Math.sqrt(square(B.x - A.x) + square(B.y - A.y) + square(B.z - A.z))
+    return Math.sqrt(square(B.x - A.x) + square(B.y - A.y) + ((A.z !== undefined && B.z !== undefined) ? square(B.z - A.z) : 0))
   }
 
   function norm (value, start, stop) {
@@ -97,6 +97,7 @@
   function precision (value, precision) {
     return Math.round(value * Math.pow(10, precision)) / Math.pow(10, precision)
   }
+
   return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision }
 
   /* ----- END ----- */
