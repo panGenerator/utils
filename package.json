@@ -4,8 +4,7 @@
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
-    "test": "mocha --reporter=list --experimental-modules",
-    "np": "np"
+    "test": "mocha --reporter=list --experimental-modules"
   },
   "type": "module",
   "files": [
@@ -24,10 +23,6 @@
   },
   "license": "(MIT OR Apache-2.0)",
   "devDependencies": {
-    "mocha": "^7.1.2",
-    "np": "^6.2.3"
-  },
-  "dependencies": {
-    "nyc": "^15.0.1"
+    "mocha": "^7.1.2"
   }
 }
