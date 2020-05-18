@@ -97,7 +97,7 @@
   function precision (value, precision) {
     return Math.round(value * Math.pow(10, precision)) / Math.pow(10, precision)
   }
-  return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, dist, square, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision }
+  return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision }
 
   /* ----- END ----- */
 }))
