@@ -1,11 +1,11 @@
 {
   "name": "@pangenerator/utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
     "test": "mocha --reporter=list --experimental-modules",
-    "np":"np"
+    "np": "np"
   },
   "type": "module",
   "files": [
