@@ -4,7 +4,7 @@
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
-    "test": "mocha --reporter=list --experimental-modules"
+    "test": "mocha"
   },
   "files": [
     "utils.js"
