@@ -1,5 +1,5 @@
 // import { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, dist, square, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision } from '../utils.js'
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -120,6 +120,11 @@ describe('Utils', function () {
     it('should return an integer', function () {
       const r = randomIndex(5)
       assert.equal(r % 1, 0)
+    })
+  })
+  describe('#copyArray()', function () {
+    it('should return copy of the array ', function () {
+      assert.deepEqual(copyArray([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
     })
   })
   describe('#shuffleArray()', function () {

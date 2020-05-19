@@ -82,7 +82,16 @@
     return Math.floor(Math.random() * N)
   }
 
-  const shuffleArray = (array) => {
+  const copyArray = (source) => {
+    const array = Array(source.length)
+    for (let i = 0; i < source.length; i++) {
+      array[i] = source[i]
+    }
+    return array
+  }
+
+  const shuffleArray = (source) => {
+    const array = copyArray(source)
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]]
@@ -99,7 +108,7 @@
     return Math.round(value * Math.pow(10, precision)) / Math.pow(10, precision)
   }
 
-  return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, shuffleArray, lerpColor, precision }
+  return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision }
 
   /* ----- END ----- */
 }))
