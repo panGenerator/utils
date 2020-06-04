@@ -108,7 +108,19 @@
     return Math.round(value * Math.pow(10, precision)) / Math.pow(10, precision)
   }
 
-  return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision }
+  const loadJSON = (address, callback) => {
+    const xObj = new XMLHttpRequest()
+    xObj.overrideMimeType('application/json')
+    xObj.open('GET', address, true)
+    xObj.onreadystatechange = () => {
+      if (xObj.readyState === 4 && xObj.status === 200) {
+        callback(xObj.responseText)
+      }
+    }
+    xObj.send(null)
+  }
+
+  return { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, loadJSON }
 
   /* ----- END ----- */
 }))
