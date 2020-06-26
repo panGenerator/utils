@@ -114,7 +114,7 @@
     xObj.open('GET', address, true)
     xObj.onreadystatechange = () => {
       if (xObj.readyState === 4 && xObj.status === 200) {
-        callback(xObj.responseText)
+        callback(JSON.parse(xObj.responseText))
       }
     }
     xObj.send(null)
