@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, removeDiacritics } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -147,6 +147,11 @@ describe('Utils', function () {
   describe('#precision', function () {
     it('should return a number with specified digits after decimal point', function () {
       assert.equal(precision(10.13432234324324, 2), 10.13)
+    })
+  })
+  describe('#removeDiacritics', function () {
+    it('should return a string without diacritics', function () {
+      assert.equal(removeDiacritics('ĄĆĘŁŃÓŚŹŻąćęłńóśźż'), 'ACELNOSZZacelnoszz')
     })
   })
 })
