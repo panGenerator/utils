@@ -5,7 +5,8 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory()
   } else {
-    root.utils = factory()
+    Object.assign(root, factory())
+    // root.utils = factory()
   }
 }(typeof self !== 'undefined' ? self : this, function () {
   /* ----- START ----- */
