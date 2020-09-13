@@ -5,7 +5,7 @@
   "main": "utils.js",
   "scripts": {
     "rollup": "rollup src/$npm_package_main --file $npm_package_main --plugin rollup-plugin-terser --format umd --name \"utils\"",
-    "docs": "jsdoc2md --template src/README.hbs --files src/$npm_package_main --separators > README.md",
+    "docs": "jsdoc2md --template src/README.hbs --files src/$npm_package_main --separators --param-list-format list > README.md",
     "build": "npm run rollup && npm run docs",
     "pretest": "npm run build",
     "test": "mocha"

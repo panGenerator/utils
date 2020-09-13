@@ -43,14 +43,13 @@ Map a number from one range to another
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Mapped number  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | Number to map |
-| low1 | <code>Number</code> | Source range lower bound |
-| high1 | <code>Number</code> | Source range upper bound |
-| low2 | <code>Number</code> | Target range lower bound |
-| high2 | <code>Number</code> | Target range upper bound |
+- value <code>Number</code> - Number to map
+- low1 <code>Number</code> - Source range lower bound
+- high1 <code>Number</code> - Source range upper bound
+- low2 <code>Number</code> - Target range lower bound
+- high2 <code>Number</code> - Target range upper bound
 
 
 * * *
@@ -62,12 +61,11 @@ Clamp a number to range
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Clamped number  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | Number to clamp |
-| min | <code>Number</code> | Range lower bound |
-| max | <code>Number</code> | Range upper bound |
+- value <code>Number</code> - Number to clamp
+- min <code>Number</code> - Range lower bound
+- max <code>Number</code> - Range upper bound
 
 
 * * *
@@ -79,12 +77,11 @@ Normalize a number
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - normalized number (0.0 - 1.0)  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | value to normalize |
-| start | <code>Number</code> | Source range lower bound |
-| stop | <code>Number</code> | Source range upper bound |
+- value <code>Number</code> - value to normalize
+- start <code>Number</code> - Source range lower bound
+- stop <code>Number</code> - Source range upper bound
 
 
 * * *
@@ -96,11 +93,10 @@ Generate random number from range
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Random number  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| [low] | <code>Number</code> | Range lower bound |
-| high | <code>Number</code> | Range upper bound |
+- [low] <code>Number</code> - Range lower bound
+- high <code>Number</code> - Range upper bound
 
 
 * * *
@@ -122,12 +118,11 @@ Linear interpolation
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Interpolated value  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| start | <code>Number</code> | First value |
-| stop | <code>Number</code> | Second value |
-| amt | <code>Number</code> | amount to interpolate |
+- start <code>Number</code> - First value
+- stop <code>Number</code> - Second value
+- amt <code>Number</code> - amount to interpolate
 
 
 * * *
@@ -139,12 +134,11 @@ Linear interpolation in 3D
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Point</code> - Interpolated point  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| A | <code>Point</code> | First point |
-| B | <code>Point</code> | Second point |
-| amt | <code>Number</code> | amount to interpolate |
+- A <code>Point</code> - First point
+- B <code>Point</code> - Second point
+- amt <code>Number</code> - amount to interpolate
 
 
 * * *
@@ -156,12 +150,11 @@ Linear interpolation in 3D array
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Array.&lt;Point&gt;</code> - Interpolated points  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| A | <code>Point</code> | First point |
-| B | <code>Point</code> | Second point |
-| count | <code>Number</code> | Point count |
+- A <code>Point</code> - First point
+- B <code>Point</code> - Second point
+- count <code>Number</code> - Point count
 
 
 * * *
@@ -173,10 +166,9 @@ Square
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - squared number  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| a | <code>Number</code> | Number to square |
+- a <code>Number</code> - Number to square
 
 
 * * *
@@ -188,11 +180,10 @@ Distance between two points (2D and 3D)
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - distance between the points  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| A | <code>Point</code> | First point |
-| B | <code>Point</code> | Second point |
+- A <code>Point</code> - First point
+- B <code>Point</code> - Second point
 
 
 * * *
@@ -204,10 +195,9 @@ Convert angle in radians to degrees
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - angle in degrees  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| radians | <code>Number</code> | angle in radians |
+- radians <code>Number</code> - angle in radians
 
 
 * * *
@@ -219,10 +209,9 @@ Convert angle in degrees to radians
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - angle in radians  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| degrees | <code>Number</code> | angle in degrees |
+- degrees <code>Number</code> - angle in degrees
 
 
 * * *
@@ -234,10 +223,9 @@ Generate random name
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>String</code> - random name  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| N | <code>Number</code> | length of the name |
+- N <code>Number</code> - length of the name
 
 
 * * *
@@ -259,10 +247,9 @@ Generate random name
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - random index  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| N | <code>Number</code> | max index |
+- N <code>Number</code> - max index
 
 
 * * *
@@ -274,10 +261,9 @@ Copy array
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Array</code> - array copy  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>Array</code> | source array |
+- source <code>Array</code> - source array
 
 
 * * *
@@ -289,10 +275,9 @@ Shuffle array
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Array</code> - shuffled array copy  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>Array</code> | source array |
+- source <code>Array</code> - source array
 
 
 * * *
@@ -304,12 +289,11 @@ Linear color interpolation
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>String</code> - Interpolated color  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| a | <code>String</code> | First color |
-| b | <code>String</code> | Second color |
-| amt | <code>Number</code> | amount to interpolate |
+- a <code>String</code> - First color
+- b <code>String</code> - Second color
+- amt <code>Number</code> - amount to interpolate
 
 
 * * *
@@ -321,11 +305,10 @@ Round number to precision
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - rounded number  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | value to round |
-| precision | <code>Number</code> | decimal places |
+- value <code>Number</code> - value to round
+- precision <code>Number</code> - decimal places
 
 
 * * *
@@ -336,11 +319,10 @@ Round number to precision
 Load JSON
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| address | <code>String</code> | address of JSON to load |
-| callback | <code>function</code> | function to call on result |
+- address <code>String</code> - address of JSON to load
+- callback <code>function</code> - function to call on result
 
 
 * * *
@@ -352,10 +334,9 @@ Remove polish diacritics
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>String</code> - string without diacritics  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| str | <code>String</code> | string with diacritics |
+- str <code>String</code> - string with diacritics
 
 
 * * *
