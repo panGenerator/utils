@@ -4,6 +4,14 @@
  */
 
 /**
+ * @typedef Point
+ * @type {Object}
+ * @property {Number} x - x coordinate
+ * @property {Number} y - y coordinate
+ * @property {Number} [z] - z coordinate
+ */
+
+/**
  * Map a number from one range to another
  * @alias module:utils.map
  * @param {Number} value - Number to map
@@ -27,6 +35,18 @@ const map = (value, low1, high1, low2, high2) => {
  */
 const clamp = (val, min, max) => {
   return val > max ? max : val < min ? min : val
+}
+
+/**
+ * Normalize
+ * @alias module:utils.norm
+ * @param {Number} value - value to normalize
+ * @param {Number} start - Source range lower bound
+ * @param {Number} stop - Source range upper bound
+ * @returns {Number} normalized number (0.0 - 1.0)
+ */
+const norm = (value, start, stop) => {
+  return (value - start) / (stop - start)
 }
 
 /**
@@ -68,10 +88,10 @@ const lerp = (start, stop, amt) => {
 /**
  * Linear interpolation in 3D
  * @alias module:utils.lerp3
- * @param {Object} A - First point
- * @param {Object} B - Second point
+ * @param {Point} A - First point
+ * @param {Point} B - Second point
  * @param {Number} amt - amount to interpolate
- * @returns {Object} Interpolated point
+ * @returns {Point} Interpolated point
  */
 const lerp3 = (A, B, amt) => {
   return { x: lerp(A.x, B.x, amt), y: lerp(A.y, B.y, amt), z: lerp(A.z, B.z, amt) }
@@ -80,10 +100,10 @@ const lerp3 = (A, B, amt) => {
 /**
  * Linear interpolation in 3D array
  * @alias module:utils.lerpedPoints
- * @param {Object} A - First point
- * @param {Object} B - Second point
+ * @param {Point} A - First point
+ * @param {Point} B - Second point
  * @param {Number} count - Point count
- * @returns {Object[]} Interpolated points
+ * @returns {Point[]} Interpolated points
  */
 const lerpedPoints = (A, B, count) => {
   const points = []
@@ -107,24 +127,12 @@ const square = (a) => {
 /**
  * Distance between two points (2D and 3D)
  * @alias module:utils.dist
- * @param {Object} A - First point
- * @param {Object} B - Second point
+ * @param {Point} A - First point
+ * @param {Point} B - Second point
  * @returns {Number} distance between the points
  */
 const dist = (A, B) => {
   return Math.sqrt(square(B.x - A.x) + square(B.y - A.y) + ((A.z !== undefined && B.z !== undefined) ? square(B.z - A.z) : 0))
-}
-
-/**
- * Normalize
- * @alias module:utils.norm
- * @param {Number} value - value to normalize
- * @param {Number} start - Source range lower bound
- * @param {Number} stop - Source range upper bound
- * @returns {Number} normalized number (0.0 - 1.0)
- */
-const norm = (value, start, stop) => {
-  return (value - start) / (stop - start)
 }
 
 /**
