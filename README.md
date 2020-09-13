@@ -37,14 +37,30 @@ Map a number from one range to another
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Mapped number  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | Number to map |
-| low1 | <code>Number</code> | Source range lower bound |
-| high1 | <code>Number</code> | Source range upper bound |
-| low2 | <code>Number</code> | Target range lower bound |
-| high2 | <code>Number</code> | Target range upper bound |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>value</td><td><code>Number</code></td><td><p>Number to map</p>
+</td>
+    </tr><tr>
+    <td>low1</td><td><code>Number</code></td><td><p>Source range lower bound</p>
+</td>
+    </tr><tr>
+    <td>high1</td><td><code>Number</code></td><td><p>Source range upper bound</p>
+</td>
+    </tr><tr>
+    <td>low2</td><td><code>Number</code></td><td><p>Target range lower bound</p>
+</td>
+    </tr><tr>
+    <td>high2</td><td><code>Number</code></td><td><p>Target range upper bound</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.clamp"></a>
 
@@ -53,12 +69,24 @@ Clamp a number in range
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Clamped number  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | Number to clamp |
-| min | <code>Number</code> | Range lower bound |
-| max | <code>Number</code> | Range upper bound |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>value</td><td><code>Number</code></td><td><p>Number to clamp</p>
+</td>
+    </tr><tr>
+    <td>min</td><td><code>Number</code></td><td><p>Range lower bound</p>
+</td>
+    </tr><tr>
+    <td>max</td><td><code>Number</code></td><td><p>Range upper bound</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.random"></a>
 
@@ -67,11 +95,21 @@ Generate random number from range
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Random number  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [low] | <code>Number</code> | Range lower bound |
-| high | <code>Number</code> | Range upper bound |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>[low]</td><td><code>Number</code></td><td><p>Range lower bound</p>
+</td>
+    </tr><tr>
+    <td>high</td><td><code>Number</code></td><td><p>Range upper bound</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.randomDir"></a>
 
@@ -87,12 +125,24 @@ Linear interpolation
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Interpolated value  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| start | <code>Number</code> | First value |
-| stop | <code>Number</code> | Second value |
-| amt | <code>Number</code> | amount to interpolate |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>start</td><td><code>Number</code></td><td><p>First value</p>
+</td>
+    </tr><tr>
+    <td>stop</td><td><code>Number</code></td><td><p>Second value</p>
+</td>
+    </tr><tr>
+    <td>amt</td><td><code>Number</code></td><td><p>amount to interpolate</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.lerp3"></a>
 
@@ -101,12 +151,24 @@ Linear interpolation in 3D
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Object</code> - Interpolated point  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| A | <code>Object</code> | First point |
-| B | <code>Object</code> | Second point |
-| amt | <code>Number</code> | amount to interpolate |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>A</td><td><code>Object</code></td><td><p>First point</p>
+</td>
+    </tr><tr>
+    <td>B</td><td><code>Object</code></td><td><p>Second point</p>
+</td>
+    </tr><tr>
+    <td>amt</td><td><code>Number</code></td><td><p>amount to interpolate</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.lerpedPoints"></a>
 
@@ -115,12 +177,24 @@ Linear interpolation in 3D array
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Array.&lt;Object&gt;</code> - Interpolated points  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| A | <code>Object</code> | First point |
-| B | <code>Object</code> | Second point |
-| count | <code>Number</code> | Point count |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>A</td><td><code>Object</code></td><td><p>First point</p>
+</td>
+    </tr><tr>
+    <td>B</td><td><code>Object</code></td><td><p>Second point</p>
+</td>
+    </tr><tr>
+    <td>count</td><td><code>Number</code></td><td><p>Point count</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.square"></a>
 
@@ -129,10 +203,18 @@ Square
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - squared number  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| a | <code>Number</code> | Number to square |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>a</td><td><code>Number</code></td><td><p>Number to square</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.dist"></a>
 
@@ -141,11 +223,21 @@ Distance between two points (2D and 3D)
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - distance between the points  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| A | <code>Object</code> | First point |
-| B | <code>Object</code> | Second point |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>A</td><td><code>Object</code></td><td><p>First point</p>
+</td>
+    </tr><tr>
+    <td>B</td><td><code>Object</code></td><td><p>Second point</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.norm"></a>
 
@@ -154,12 +246,24 @@ Normalize
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - normalized number (0.0 - 1.0)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | value to normalize |
-| start | <code>Number</code> | Source range lower bound |
-| stop | <code>Number</code> | Source range upper bound |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>value</td><td><code>Number</code></td><td><p>value to normalize</p>
+</td>
+    </tr><tr>
+    <td>start</td><td><code>Number</code></td><td><p>Source range lower bound</p>
+</td>
+    </tr><tr>
+    <td>stop</td><td><code>Number</code></td><td><p>Source range upper bound</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.degrees"></a>
 
@@ -168,10 +272,18 @@ Convert angle in radians to degrees
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - angle in degrees  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| radians | <code>Number</code> | angle in radians |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>radians</td><td><code>Number</code></td><td><p>angle in radians</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.radians"></a>
 
@@ -180,10 +292,18 @@ Convert angle in degrees to radians
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - angle in radians  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| degrees | <code>Number</code> | angle in degrees |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>degrees</td><td><code>Number</code></td><td><p>angle in degrees</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.randomName"></a>
 
@@ -192,10 +312,18 @@ Generate random name
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>String</code> - random name  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| N | <code>Number</code> | length of the name |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>N</td><td><code>Number</code></td><td><p>length of the name</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.timestampName"></a>
 
@@ -211,10 +339,18 @@ Generate random name
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - random index  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| N | <code>Number</code> | max index |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>N</td><td><code>Number</code></td><td><p>max index</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.copyArray"></a>
 
@@ -223,10 +359,18 @@ Copy array
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Array</code> - array copy  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>Array</code> | source array |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>source</td><td><code>Array</code></td><td><p>source array</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.shuffleArray"></a>
 
@@ -235,10 +379,18 @@ Shuffle array
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Array</code> - shuffled array copy  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>Array</code> | source array |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>source</td><td><code>Array</code></td><td><p>source array</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.lerpColor"></a>
 
@@ -247,12 +399,24 @@ Linear color interpolation
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>String</code> - Interpolated color  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| a | <code>String</code> | First color |
-| b | <code>String</code> | Second color |
-| amt | <code>Number</code> | amount to interpolate |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>a</td><td><code>String</code></td><td><p>First color</p>
+</td>
+    </tr><tr>
+    <td>b</td><td><code>String</code></td><td><p>Second color</p>
+</td>
+    </tr><tr>
+    <td>amt</td><td><code>Number</code></td><td><p>amount to interpolate</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.precision"></a>
 
@@ -261,11 +425,21 @@ Round number to precision
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - rounded number  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>Number</code> | value to round |
-| precision | <code>Number</code> | decimal places |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>value</td><td><code>Number</code></td><td><p>value to round</p>
+</td>
+    </tr><tr>
+    <td>precision</td><td><code>Number</code></td><td><p>decimal places</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.loadJSON"></a>
 
@@ -273,11 +447,21 @@ Round number to precision
 Load JSON
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| address | <code>String</code> | address of JSON to loads |
-| callback | <code>function</code> | callback on result |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>address</td><td><code>String</code></td><td><p>address of JSON to loads</p>
+</td>
+    </tr><tr>
+    <td>callback</td><td><code>function</code></td><td><p>callback on result</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 <a name="module_utils.removeDiacritics"></a>
 
@@ -286,10 +470,18 @@ Remove polish diacritics
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>String</code> - string without diacritics  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| str | <code>String</code> | string with diacritics |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>str</td><td><code>String</code></td><td><p>string with diacritics</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 
 ---
