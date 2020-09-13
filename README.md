@@ -58,7 +58,7 @@ Map a number from one range to another
 <a name="module_utils.clamp"></a>
 
 ### utils.clamp(value, min, max) ⇒ <code>Number</code>
-Clamp a number in range
+Clamp a number to range
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - Clamped number  
@@ -75,7 +75,7 @@ Clamp a number in range
 <a name="module_utils.norm"></a>
 
 ### utils.norm(value, start, stop) ⇒ <code>Number</code>
-Normalize
+Normalize a number
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
 **Returns**: <code>Number</code> - normalized number (0.0 - 1.0)  
@@ -339,8 +339,8 @@ Load JSON
 
 | Param | Type | Description |
 | --- | --- | --- |
-| address | <code>String</code> | address of JSON to loads |
-| callback | <code>function</code> | callback on result |
+| address | <code>String</code> | address of JSON to load |
+| callback | <code>function</code> | function to call on result |
 
 
 * * *
