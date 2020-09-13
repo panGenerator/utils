@@ -347,15 +347,12 @@ Remove polish diacritics
 **Kind**: inner typedef of [<code>utils</code>](#module_utils)  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| x | <code>Number</code> | x coordinate |
-| y | <code>Number</code> | y coordinate |
-| [z] | <code>Number</code> | z coordinate |
+- x <code>Number</code> - x coordinate  
+- y <code>Number</code> - y coordinate  
+- z <code>Number</code> - z coordinate  
 
 
 * * *
 
 
----
 &copy; 2020 panGenerator
