@@ -4,6 +4,10 @@
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
+    "rollup": "rollup src/$npm_package_main --file $npm_package_main --plugin rollup-plugin-terser --format umd --name \"utils\"",
+    "docs": "jsdoc2md --template src/README.hbs --files src/$npm_package_main > README.md",
+    "build": "npm run rollup && npm run docs",
+    "pretest": "npm run build",
     "test": "mocha"
   },
   "files": [
@@ -29,6 +33,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^7.1.2"
+    "jsdoc-to-markdown": "^6.0.1",
+    "mocha": "^7.1.2",
+    "rollup": "^2.26.11",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
