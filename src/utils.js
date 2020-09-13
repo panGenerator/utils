@@ -26,7 +26,7 @@ const map = (value, low1, high1, low2, high2) => {
 }
 
 /**
- * Clamp a number in range
+ * Clamp a number to range
  * @alias module:utils.clamp
  * @param {Number} value - Number to clamp
  * @param {Number} min - Range lower bound
@@ -38,7 +38,7 @@ const clamp = (val, min, max) => {
 }
 
 /**
- * Normalize
+ * Normalize a number
  * @alias module:utils.norm
  * @param {Number} value - value to normalize
  * @param {Number} start - Source range lower bound
@@ -242,8 +242,8 @@ const precision = (value, precision) => {
 /**
  * Load JSON
  * @alias module:utils.loadJSON
- * @param {String} address - address of JSON to loads
- * @param {Function} callback - callback on result
+ * @param {String} address - address of JSON to load
+ * @param {Function} callback - function to call on result
  */
 const loadJSON = (address, callback) => {
   const xObj = new XMLHttpRequest()
