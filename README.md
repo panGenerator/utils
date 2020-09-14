@@ -355,4 +355,4 @@ Remove polish diacritics
 * * *
 
 
-&copy; 2020 panGenerator
+Copyright &copy; 2020 panGenerator
