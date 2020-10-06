@@ -266,4 +266,17 @@ const table = { Ą: 'A', Ć: 'C', Ę: 'E', Ł: 'L', Ń: 'N', Ó: 'O', Ś: 'S', �
  */
 const removeDiacritics = (str) => str.replace(/([ĄĆĘŁŃÓŚŹŻąćęłńóśźż])/g, function (l) { return table[l] })
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, loadJSON, removeDiacritics }
+/**
+ * Split string to N sized chunks
+ * @alias module:utils.splitChunks
+ * @param {String} str - string to split
+ * @param {Number} n - length of chunk
+ * @param {Boolean} discard - discard chunks shorten than N
+ * @returns {Array} array of string chunks
+ */
+const splitChunks = (str, n, discard) => {
+  const chunks = str.split(new RegExp('(.{' + n.toString() + '})'))
+  return discard ? chunks.filter(x => x.length === n) : chunks.filter(x => x.length > 0)
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, loadJSON, removeDiacritics, splitChunks }

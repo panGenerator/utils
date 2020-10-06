@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, removeDiacritics } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, removeDiacritics, splitChunks } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -151,6 +151,14 @@ describe('Utils', function () {
   describe('#removeDiacritics', function () {
     it('should return a string without diacritics', function () {
       assert.equal(removeDiacritics('ĄĆĘŁŃÓŚŹŻąćęłńóśźż'), 'ACELNOSZZacelnoszz')
+    })
+  })
+  describe('#splitChunks', function () {
+    it('should return an array of chunks', function () {
+      assert.deepEqual(splitChunks('1234567890', 4), ['1234', '5678', '90'])
+    })
+    it('should return an array of chunks of length N', function () {
+      assert.deepEqual(splitChunks('1234567890', 4, true), ['1234', '5678'])
     })
   })
 })

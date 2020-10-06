@@ -30,6 +30,7 @@ Various functions used in javascript tools
         * [.precision(value, precision)](#module_utils.precision) ⇒ <code>Number</code>
         * [.loadJSON(address, callback)](#module_utils.loadJSON)
         * [.removeDiacritics(str)](#module_utils.removeDiacritics) ⇒ <code>String</code>
+        * [.splitChunks(str, n, discard)](#module_utils.splitChunks) ⇒ <code>Array</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
 
@@ -337,6 +338,22 @@ Remove polish diacritics
 **Params**
 
 - str <code>String</code> - string with diacritics
+
+
+* * *
+
+<a name="module_utils.splitChunks"></a>
+
+### utils.splitChunks(str, n, discard) ⇒ <code>Array</code>
+Split string to N sized chunks
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> - array of string chunks  
+**Params**
+
+- str <code>String</code> - string to split
+- n <code>Number</code> - length of chunk
+- discard <code>Boolean</code> - discard chunks shorten than N
 
 
 * * *
