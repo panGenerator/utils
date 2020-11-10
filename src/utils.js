@@ -270,8 +270,8 @@ const removeDiacritics = (str) => str.replace(/([ĄĆĘŁŃÓŚŹŻąćęłńó�
  * Split string to N sized chunks
  * @alias module:utils.splitChunks
  * @param {String} str - string to split
- * @param {Number} n - length of chunk
- * @param {Boolean} discard - discard chunks shorten than N
+ * @param {Number} n - chunk length
+ * @param {Boolean} discard - discard chunks shorter than N
  * @returns {Array} array of string chunks
  */
 const splitChunks = (str, n, discard) => {
