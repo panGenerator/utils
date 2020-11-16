@@ -279,4 +279,15 @@ const splitChunks = (str, n, discard) => {
   return discard ? chunks.filter(x => x.length === n) : chunks.filter(x => x.length > 0)
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, loadJSON, removeDiacritics, splitChunks }
+/**
+ * Get quarter from date
+ * @alias module:utils.getQuarter
+ * @param {Date} d - Date to get quarter from
+ * @returns {Array} year and quarter (1-4)
+ */
+const getQuarter = (d) => {
+  d = d || new Date()
+  return [d.getFullYear(), Math.floor((d.getMonth()) / 3) + 1]
+} // getQuarter().join('Q')
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter }

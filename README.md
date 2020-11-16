@@ -31,6 +31,7 @@ Various functions used in javascript tools
         * [.loadJSON(address, callback)](#module_utils.loadJSON)
         * [.removeDiacritics(str)](#module_utils.removeDiacritics) ⇒ <code>String</code>
         * [.splitChunks(str, n, discard)](#module_utils.splitChunks) ⇒ <code>Array</code>
+        * [.getQuarter(d)](#module_utils.getQuarter) ⇒ <code>Array</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
 
@@ -352,8 +353,22 @@ Split string to N sized chunks
 **Params**
 
 - str <code>String</code> - string to split
-- n <code>Number</code> - length of chunk
-- discard <code>Boolean</code> - discard chunks shorten than N
+- n <code>Number</code> - chunk length
+- discard <code>Boolean</code> - discard chunks shorter than N
+
+
+* * *
+
+<a name="module_utils.getQuarter"></a>
+
+### utils.getQuarter(d) ⇒ <code>Array</code>
+Get quarter from date
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> - year and quarter (1-4)  
+**Params**
+
+- d <code>Date</code> - Date to get quarter from
 
 
 * * *

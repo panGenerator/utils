@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, removeDiacritics, splitChunks } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, removeDiacritics, splitChunks, getQuarter } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -159,6 +159,22 @@ describe('Utils', function () {
     })
     it('should return an array of chunks of length N', function () {
       assert.deepEqual(splitChunks('1234567890', 4, true), ['1234', '5678'])
+    })
+  })
+  describe('#getQuarter', function () {
+    it('should return an array with proper year and quarter', function () {
+      assert.deepEqual(getQuarter(new Date(2020, 0, 10)), [2020, 1])
+      assert.deepEqual(getQuarter(new Date(2019, 1, 11)), [2019, 1])
+      assert.deepEqual(getQuarter(new Date(2018, 2, 12)), [2018, 1])
+      assert.deepEqual(getQuarter(new Date(2017, 3, 13)), [2017, 2])
+      assert.deepEqual(getQuarter(new Date(2016, 4, 14)), [2016, 2])
+      assert.deepEqual(getQuarter(new Date(2015, 5, 15)), [2015, 2])
+      assert.deepEqual(getQuarter(new Date(2014, 6, 16)), [2014, 3])
+      assert.deepEqual(getQuarter(new Date(2013, 7, 17)), [2013, 3])
+      assert.deepEqual(getQuarter(new Date(2012, 8, 18)), [2012, 3])
+      assert.deepEqual(getQuarter(new Date(2011, 9, 19)), [2011, 4])
+      assert.deepEqual(getQuarter(new Date(2010, 10, 20)), [2010, 4])
+      assert.deepEqual(getQuarter(new Date(2009, 11, 21)), [2009, 4])
     })
   })
 })
