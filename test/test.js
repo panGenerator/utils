@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, removeDiacritics, splitChunks, getQuarter } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -126,8 +126,16 @@ describe('Utils', function () {
     })
   })
   describe('#shuffleArray()', function () {
-    it('should return array with the same length', function () {
+    it('should return an array with the same length', function () {
       assert.equal(shuffleArray([1, 2, 3]).length, 3)
+    })
+  })
+  describe('#filterUnique()', function () {
+    it('should return the source array when no duplicates are present', function () {
+      assert.deepEqual(filterUnique([1, 2, 3]), [1, 2, 3])
+    })
+    it('should return an array with unique elements only', function () {
+      assert.deepEqual(filterUnique([1, 2, 3, 3, 2, 1, 2]), [1, 2, 3])
     })
   })
   describe('#lerpColor()', function () {

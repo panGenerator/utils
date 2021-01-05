@@ -216,6 +216,18 @@ const shuffleArray = (source) => {
 }
 
 /**
+ * Filter array unique
+ * @alias module:utils.filterUnique
+ * @param {Array} source - source array
+ * @returns {Array} array with unique elements only
+ */
+const filterUnique = (source) => {
+  return source.filter((value, index, self) => {
+    return self.indexOf(value) === index
+  })
+}
+
+/**
  * Linear color interpolation
  * @alias module:utils.lerpColor
  * @param {String} a - First color
@@ -290,4 +302,4 @@ const getQuarter = (d) => {
   return [d.getFullYear(), Math.floor((d.getMonth()) / 3) + 1]
 } // getQuarter().join('Q')
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter }
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter }

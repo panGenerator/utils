@@ -26,6 +26,7 @@ Various functions used in javascript tools
         * [.randomIndex(N)](#module_utils.randomIndex) ⇒ <code>Number</code>
         * [.copyArray(source)](#module_utils.copyArray) ⇒ <code>Array</code>
         * [.shuffleArray(source)](#module_utils.shuffleArray) ⇒ <code>Array</code>
+        * [.filterUnique(source)](#module_utils.filterUnique) ⇒ <code>Array</code>
         * [.lerpColor(a, b, amt)](#module_utils.lerpColor) ⇒ <code>String</code>
         * [.precision(value, precision)](#module_utils.precision) ⇒ <code>Number</code>
         * [.loadJSON(address, callback)](#module_utils.loadJSON)
@@ -284,6 +285,20 @@ Shuffle array
 
 * * *
 
+<a name="module_utils.filterUnique"></a>
+
+### utils.filterUnique(source) ⇒ <code>Array</code>
+Filter array unique
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> - array with unique elements only  
+**Params**
+
+- source <code>Array</code> - source array
+
+
+* * *
+
 <a name="module_utils.lerpColor"></a>
 
 ### utils.lerpColor(a, b, amt) ⇒ <code>String</code>
@@ -387,4 +402,4 @@ Get quarter from date
 * * *
 
 
-Copyright &copy; 2020 panGenerator
+Copyright &copy; 2021 panGenerator
