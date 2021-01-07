@@ -302,4 +302,14 @@ const getQuarter = (d) => {
   return [d.getFullYear(), Math.floor((d.getMonth()) / 3) + 1]
 } // getQuarter().join('Q')
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter }
+const downloadDataUri = (options) => {
+  var element = document.createElement('a')
+  element.setAttribute('href', options.data)
+  element.setAttribute('download', options.filename)
+  element.style.display = 'none'
+  document.body.appendChild(element)
+  element.click()
+  document.body.removeChild(element)
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri }
