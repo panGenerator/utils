@@ -302,6 +302,13 @@ const getQuarter = (d) => {
   return [d.getFullYear(), Math.floor((d.getMonth()) / 3) + 1]
 } // getQuarter().join('Q')
 
+/**
+ * Download file from base64 data uri
+ * @alias module:utils.downloadDataUri
+ * @param {Object} options - options for the downloaded file
+ * @param {string} options.data - contents of the file
+ * @param {string} options.filename - name of the file
+ */
 const downloadDataUri = (options) => {
   var element = document.createElement('a')
   element.setAttribute('href', options.data)
