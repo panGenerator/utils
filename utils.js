@@ -1,5 +1,5 @@
 /*!
- * @license @pangenerator/utils v2.3.1, Copyright © 2021 panGenerator
+ * @license @pangenerator/utils v2.3.2, Copyright © 2021 panGenerator
  * Released under MIT license
  * https://github.com/panGenerator/utils#readme
  */

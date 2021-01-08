@@ -33,6 +33,7 @@ Various functions used in javascript tools
         * [.removeDiacritics(str)](#module_utils.removeDiacritics) ⇒ <code>String</code>
         * [.splitChunks(str, n, discard)](#module_utils.splitChunks) ⇒ <code>Array</code>
         * [.getQuarter(d)](#module_utils.getQuarter) ⇒ <code>Array</code>
+        * [.downloadDataUri(options)](#module_utils.downloadDataUri)
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
 
@@ -384,6 +385,21 @@ Get quarter from date
 **Params**
 
 - d <code>Date</code> - Date to get quarter from
+
+
+* * *
+
+<a name="module_utils.downloadDataUri"></a>
+
+### utils.downloadDataUri(options)
+Download file from base64 data uri
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Params**
+
+- options <code>Object</code> - options for the downloaded file
+    - .data <code>string</code> - contents of the file
+    - .filename <code>string</code> - name of the file
 
 
 * * *
