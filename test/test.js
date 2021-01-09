@@ -131,6 +131,9 @@ describe('Utils', function () {
     })
   })
   describe('#filterUnique()', function () {
+    it('should return an array type', function () {
+      assert.equal(filterUnique([1, 2, 3]).constructor, Array)
+    })
     it('should return the source array when no duplicates are present', function () {
       assert.deepEqual(filterUnique([1, 2, 3]), [1, 2, 3])
     })

@@ -222,9 +222,7 @@ const shuffleArray = (source) => {
  * @returns {Array} array with unique elements only
  */
 const filterUnique = (source) => {
-  return source.filter((value, index, self) => {
-    return self.indexOf(value) === index
-  })
+  return [... (new Set(source))]
 }
 
 /**
