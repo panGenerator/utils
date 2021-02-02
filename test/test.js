@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -7,7 +7,6 @@ describe('Utils', function () {
       assert.equal(map(0.5, 0, 2, 100, 200), 125)
     })
   })
-
   describe('#clamp()', function () {
     it('should return min if number lower than range', function () {
       assert.equal(clamp(0, 1, 10), 1)
@@ -49,7 +48,6 @@ describe('Utils', function () {
       assert(r === -1 || r === 1)
     })
   })
-
   describe('#lerp()', function () {
     it('should interpolate beetween two numbers', function () {
       assert.equal(lerp(0, 100, 0.5), 50)
@@ -89,6 +87,23 @@ describe('Utils', function () {
   describe('#radians()', function () {
     it('should return angle in radians', function () {
       assert.equal(radians(180), Math.PI)
+    })
+  })
+  describe('#intersection()', function () {
+    it('should return false if one circle is contained in the other', function () {
+      const c1 = { x: 100, y: 100, r: 50 }
+      const c2 = { x: 100, y: 100, r: 60 }
+      assert.equal(intersection(c1, c2), false)
+    })
+    it('should return false if the circles are not intersecting', function () {
+      const c1 = { x: 300, y: 100, r: 50 }
+      const c2 = { x: 100, y: 100, r: 60 }
+      assert.equal(intersection(c1, c2), false)
+    })
+    it('should return an array of points of intersection', function () {
+      const c1 = { x: 300, y: 100, r: 120 }
+      const c2 = { x: 100, y: 100, r: 100 }
+      assert.deepEqual(intersection(c1, c2), [{ x: 189, y: 54.40394753928801 }, { x: 189, y: 145.59605246071197 }])
     })
   })
   describe('#randomName()', function () {
@@ -153,7 +168,6 @@ describe('Utils', function () {
       assert.equal(lerpColor('#ff0000', '#ffff00', 0.4).charAt(0), '#')
     })
   })
-
   describe('#precision', function () {
     it('should return a number with specified digits after decimal point', function () {
       assert.equal(precision(10.13432234324324, 2), 10.13)

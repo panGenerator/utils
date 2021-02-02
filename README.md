@@ -21,6 +21,7 @@ Various functions used in javascript tools
         * [.dist(A, B)](#module_utils.dist) ⇒ <code>Number</code>
         * [.degrees(radians)](#module_utils.degrees) ⇒ <code>Number</code>
         * [.radians(degrees)](#module_utils.radians) ⇒ <code>Number</code>
+        * [.intersection(c1, c2)](#module_utils.intersection) ⇒ <code>Array</code> \| <code>Boolean</code>
         * [.randomName(N)](#module_utils.randomName) ⇒ <code>String</code>
         * [.timestampName()](#module_utils.timestampName) ⇒ <code>String</code>
         * [.randomIndex(N)](#module_utils.randomIndex) ⇒ <code>Number</code>
@@ -36,6 +37,7 @@ Various functions used in javascript tools
         * [.downloadDataUri(options)](#module_utils.downloadDataUri)
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
+        * [~Circle](#module_utils..Circle) : <code>Object</code>
 
 
 * * *
@@ -216,6 +218,21 @@ Convert angle in degrees to radians
 **Params**
 
 - degrees <code>Number</code> - angle in degrees
+
+
+* * *
+
+<a name="module_utils.intersection"></a>
+
+### utils.intersection(c1, c2) ⇒ <code>Array</code> \| <code>Boolean</code>
+Find intersection points between two circles
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> \| <code>Boolean</code> - intersection or false (if no intersection)  
+**Params**
+
+- c1 <code>Circle</code> - first circle
+- c2 <code>Circle</code> - second circle
 
 
 * * *
@@ -413,6 +430,19 @@ Download file from base64 data uri
 - x <code>Number</code> - x coordinate  
 - y <code>Number</code> - y coordinate  
 - z <code>Number</code> - z coordinate  
+
+
+* * *
+
+<a name="module_utils..Circle"></a>
+
+### utils~Circle : <code>Object</code>
+**Kind**: inner typedef of [<code>utils</code>](#module_utils)  
+**Properties**
+
+- x <code>Number</code> - x coordinate of the center point  
+- y <code>Number</code> - y coordinate of the center point  
+- r <code>Number</code> - radius  
 
 
 * * *

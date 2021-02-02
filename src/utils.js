@@ -12,6 +12,14 @@
  */
 
 /**
+ * @typedef Circle
+ * @type {Object}
+ * @property {Number} x - x coordinate of the center point
+ * @property {Number} y - y coordinate of the center point
+ * @property {Number} r - radius
+ */
+
+/**
  * Map a number from one range to another
  * @alias module:utils.map
  * @param {Number} value - Number to map
@@ -156,6 +164,37 @@ const radians = (degrees) => {
 }
 
 /**
+ * Find intersection points between two circles
+ * @alias module:utils.intersection
+ * @param {Circle} c1 - first circle
+ * @param {Circle} c2 - second circle
+ * @returns {(Array|Boolean)} intersection or false (if no intersection)
+ */
+const intersection = (c1, c2) => {
+  const dx = c2.x - c1.x
+  const dy = c2.y - c1.y
+  const d = Math.sqrt((dy * dy) + (dx * dx))
+
+  if (d > (c1.r + c2.r)) {
+    return false
+  }
+  if (d < Math.abs(c1.r - c2.r)) {
+    return false
+  }
+  const a = ((c1.r * c1.r) - (c2.r * c2.r) + (d * d)) / (2.0 * d)
+
+  const xc = c1.x + (dx * a / d)
+  const yc = c1.y + (dy * a / d)
+
+  const h = Math.sqrt((c1.r * c1.r) - (a * a))
+
+  const rx = -dy * (h / d)
+  const ry = dx * (h / d)
+
+  return [{ x: xc + rx, y: yc + ry }, { x: xc - rx, y: yc - ry }]
+}
+
+/**
  * Generate random name
  * @alias module:utils.randomName
  * @param {Number} N - length of the name
@@ -222,7 +261,7 @@ const shuffleArray = (source) => {
  * @returns {Array} array with unique elements only
  */
 const filterUnique = (source) => {
-  return [... (new Set(source))]
+  return [...(new Set(source))]
 }
 
 /**
@@ -317,4 +356,4 @@ const downloadDataUri = (options) => {
   document.body.removeChild(element)
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri }
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri }
