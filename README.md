@@ -37,6 +37,7 @@ Various functions used in javascript tools
         * [.downloadDataUri(options)](#module_utils.downloadDataUri)
         * [.polarToCartesian(r, angle)](#module_utils.polarToCartesian)
         * [.cartesianToPolar(x, y)](#module_utils.cartesianToPolar)
+        * [.pageOffset(elem)](#module_utils.pageOffset)
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
         * [~Circle](#module_utils..Circle) : <code>Object</code>
@@ -447,6 +448,19 @@ Convert coordinates from cartesian to polar
 
 - x <code>Number</code> - x coordinate
 - y <code>Number</code> - y coordinate
+
+
+* * *
+
+<a name="module_utils.pageOffset"></a>
+
+### utils.pageOffset(elem)
+Get element page offset
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Params**
+
+- elem <code>Object</code> - HTML element
 
 
 * * *
