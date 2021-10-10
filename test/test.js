@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter, polarToCartesian, cartesianToPolar } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -200,6 +200,33 @@ describe('Utils', function () {
       assert.deepEqual(getQuarter(new Date(2011, 9, 19)), [2011, 4])
       assert.deepEqual(getQuarter(new Date(2010, 10, 20)), [2010, 4])
       assert.deepEqual(getQuarter(new Date(2009, 11, 21)), [2009, 4])
+    })
+  })
+
+  describe('#polarToCartesian', function () {
+    it('should convert radius and angle to proper x and y coordinates', function () {
+      assert.deepEqual(polarToCartesian(1, 0.0 * Math.PI / 4.0), { x: 1, y: 0 })
+      assert.deepEqual(polarToCartesian(1, 1.0 * Math.PI / 4.0), { x: 0.7071067811865476, y: 0.7071067811865475 })
+      assert.deepEqual(polarToCartesian(1, 2.0 * Math.PI / 4.0), { x: 6.123233995736766e-17, y: 1 })
+      assert.deepEqual(polarToCartesian(1, 3.0 * Math.PI / 4.0), { x: -0.7071067811865475, y: 0.7071067811865476 })
+      assert.deepEqual(polarToCartesian(1, 4.0 * Math.PI / 4.0), { x: -1, y: 1.2246467991473532e-16 })
+      assert.deepEqual(polarToCartesian(1, 5.0 * Math.PI / 4.0), { x: -0.7071067811865477, y: -0.7071067811865475 })
+      assert.deepEqual(polarToCartesian(1, 6.0 * Math.PI / 4.0), { x: -1.8369701987210297e-16, y: -1 })
+      assert.deepEqual(polarToCartesian(1, 7.0 * Math.PI / 4.0), { x: 0.7071067811865474, y: -0.7071067811865477 })
+      assert.deepEqual(polarToCartesian(1, 8.0 * Math.PI / 4.0), { x: 1, y: -2.4492935982947064e-16 })
+    })
+  })
+  describe('#cartesianToPolar', function () {
+    it('should convert x and y coordinates to proper radius and angle ', function () {
+      assert.deepEqual(cartesianToPolar(1, 0), { r: 1, angle: 0.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(0.7071067811865476, 0.7071067811865475), { r: 1, angle: 1.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(0, 1), { r: 1, angle: 2.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(-0.7071067811865475, 0.7071067811865476), { r: 1, angle: 3.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(-1, 0), { r: 1, angle: 4.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(-0.7071067811865477, -0.7071067811865475), { r: 1, angle: 5.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(0, -1), { r: 1, angle: 6.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(0.7071067811865474, -0.7071067811865477), { r: 1, angle: 7.0 * Math.PI / 4.0 })
+      assert.deepEqual(cartesianToPolar(1, 0), { r: 1, angle: 0.0 * Math.PI / 4.0 })
     })
   })
 })

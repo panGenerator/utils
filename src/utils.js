@@ -343,8 +343,8 @@ const getQuarter = (d) => {
  * Download file from base64 data uri
  * @alias module:utils.downloadDataUri
  * @param {Object} options - options for the downloaded file
- * @param {string} options.data - contents of the file
- * @param {string} options.filename - name of the file
+ * @param {String} options.data - contents of the file
+ * @param {String} options.filename - name of the file
  */
 const downloadDataUri = (options) => {
   var element = document.createElement('a')
@@ -356,4 +356,33 @@ const downloadDataUri = (options) => {
   document.body.removeChild(element)
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri }
+/**
+ * Convert coordinates from polar to cartesian
+ * @alias module:utils.polarToCartesian
+ * @param {Number} r - radius
+ * @param {Number} angle - angle
+ */
+const polarToCartesian = (r, angle) => {
+  return {
+    x: r * Math.cos(angle),
+    y: r * Math.sin(angle)
+  }
+}
+
+/**
+ * Convert coordinates from cartesian to polar
+ * @alias module:utils.cartesianToPolar
+ * @param {Number} x - x coordinate
+ * @param {Number} y - y coordinate
+ */
+const cartesianToPolar = (x, y) => {
+  let angle = Math.atan2(y, x)
+  if (angle < 0) { while (angle < 0) { angle += Math.PI * 2.0 } }
+  if (angle >= Math.PI * 2.0) { while (angle >= Math.PI) { angle -= Math.PI * 2.0 } }
+  return {
+    r: Math.sqrt(x * x + y * y),
+    angle
+  }
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri, polarToCartesian, cartesianToPolar }
