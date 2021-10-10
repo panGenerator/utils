@@ -385,4 +385,19 @@ const cartesianToPolar = (x, y) => {
   }
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri, polarToCartesian, cartesianToPolar }
+/**
+ * Get element page offset
+ * @alias module:utils.pageOffset
+ * @param {Object} elem - HTML element
+ */
+
+const pageOffset = (elem) => {
+  const rect = elem.getBoundingClientRect()
+  const win = elem.ownerDocument.defaultView
+  return {
+    top: rect.top + win.pageYOffset,
+    left: rect.left + win.pageXOffset
+  }
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset }
