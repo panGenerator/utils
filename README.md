@@ -34,10 +34,12 @@ Various functions used in javascript tools
         * [.removeDiacritics(str)](#module_utils.removeDiacritics) ⇒ <code>String</code>
         * [.splitChunks(str, n, discard)](#module_utils.splitChunks) ⇒ <code>Array</code>
         * [.getQuarter(d)](#module_utils.getQuarter) ⇒ <code>Array</code>
+        * [.quarterExtent(quarter, year)](#module_utils.quarterExtent) ⇒ <code>Array</code>
         * [.downloadDataUri(options)](#module_utils.downloadDataUri)
-        * [.polarToCartesian(r, angle)](#module_utils.polarToCartesian)
-        * [.cartesianToPolar(x, y)](#module_utils.cartesianToPolar)
-        * [.pageOffset(elem)](#module_utils.pageOffset)
+        * [.polarToCartesian(r, angle)](#module_utils.polarToCartesian) ⇒ <code>Point</code>
+        * [.cartesianToPolar(x, y)](#module_utils.cartesianToPolar) ⇒ <code>Object</code>
+        * [.pageOffset(elem)](#module_utils.pageOffset) ⇒ <code>Object</code>
+        * [.fuzzySearch(list, searchValue)](#module_utils.fuzzySearch) ⇒ <code>Array</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
         * [~Circle](#module_utils..Circle) : <code>Object</code>
@@ -409,6 +411,21 @@ Get quarter from date
 
 * * *
 
+<a name="module_utils.quarterExtent"></a>
+
+### utils.quarterExtent(quarter, year) ⇒ <code>Array</code>
+Get quarter extent
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> - start and end date of quarter  
+**Params**
+
+- quarter <code>Number</code> - quarter (1-4)
+- year <code>Number</code> - full year
+
+
+* * *
+
 <a name="module_utils.downloadDataUri"></a>
 
 ### utils.downloadDataUri(options)
@@ -426,10 +443,11 @@ Download file from base64 data uri
 
 <a name="module_utils.polarToCartesian"></a>
 
-### utils.polarToCartesian(r, angle)
+### utils.polarToCartesian(r, angle) ⇒ <code>Point</code>
 Convert coordinates from polar to cartesian
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Point</code> - cartesian coordinates  
 **Params**
 
 - r <code>Number</code> - radius
@@ -440,10 +458,11 @@ Convert coordinates from polar to cartesian
 
 <a name="module_utils.cartesianToPolar"></a>
 
-### utils.cartesianToPolar(x, y)
+### utils.cartesianToPolar(x, y) ⇒ <code>Object</code>
 Convert coordinates from cartesian to polar
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Object</code> - polar coordinates  
 **Params**
 
 - x <code>Number</code> - x coordinate
@@ -454,13 +473,29 @@ Convert coordinates from cartesian to polar
 
 <a name="module_utils.pageOffset"></a>
 
-### utils.pageOffset(elem)
+### utils.pageOffset(elem) ⇒ <code>Object</code>
 Get element page offset
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Object</code> - top and left page offset  
 **Params**
 
 - elem <code>Object</code> - HTML element
+
+
+* * *
+
+<a name="module_utils.fuzzySearch"></a>
+
+### utils.fuzzySearch(list, searchValue) ⇒ <code>Array</code>
+Fuzzy search element in list
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> - elements matching search value  
+**Params**
+
+- list <code>Array</code> - Array of terms
+- searchValue <code>String</code> - search value to find
 
 
 * * *
@@ -492,4 +527,4 @@ Get element page offset
 * * *
 
 
-Copyright &copy; 2021 panGenerator
+Copyright &copy; 2022 panGenerator

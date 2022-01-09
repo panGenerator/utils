@@ -340,6 +340,24 @@ const getQuarter = (d) => {
 } // getQuarter().join('Q')
 
 /**
+ * Get quarter extent
+ * @alias module:utils.quarterExtent
+ * @param {Number} quarter - quarter (1-4)
+ * @param {Number} year - full year
+ * @returns {Array} start and end date of quarter
+ */
+const quarterExtent = (quarter, year) => {
+  return [
+    new Date(`${year}-${((quarter - 1) * 3 + 1).toString().padStart(2, '0')}-01`),
+    new Date(
+      `${year}-${(quarter * 3).toString().padStart(2, '0')}-${
+        quarter === 1 || quarter === 4 ? 31 : 30
+      }`
+    )
+  ]
+}
+
+/**
  * Download file from base64 data uri
  * @alias module:utils.downloadDataUri
  * @param {Object} options - options for the downloaded file
@@ -361,6 +379,7 @@ const downloadDataUri = (options) => {
  * @alias module:utils.polarToCartesian
  * @param {Number} r - radius
  * @param {Number} angle - angle
+ * @returns {Point} cartesian coordinates
  */
 const polarToCartesian = (r, angle) => {
   return {
@@ -374,6 +393,7 @@ const polarToCartesian = (r, angle) => {
  * @alias module:utils.cartesianToPolar
  * @param {Number} x - x coordinate
  * @param {Number} y - y coordinate
+ * @returns {Object} polar coordinates
  */
 const cartesianToPolar = (x, y) => {
   let angle = Math.atan2(y, x)
@@ -389,8 +409,8 @@ const cartesianToPolar = (x, y) => {
  * Get element page offset
  * @alias module:utils.pageOffset
  * @param {Object} elem - HTML element
+ * @returns {Object} top and left page offset
  */
-
 const pageOffset = (elem) => {
   const rect = elem.getBoundingClientRect()
   const win = elem.ownerDocument.defaultView
@@ -400,4 +420,19 @@ const pageOffset = (elem) => {
   }
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset }
+/**
+ * Fuzzy search element in list
+ * @alias module:utils.fuzzySearch
+ * @param {Array} list - Array of terms
+ * @param {String} searchValue - search value to find
+ * @returns {Array} elements matching search value
+ */
+const fuzzySearch = (list, searchValue) => {
+  const buf = '.*' + searchValue.replace(/(.)/g, '$1.*').toLowerCase()
+  var reg = new RegExp(buf)
+  return list.filter((e) => {
+    return reg.test(e.toLowerCase())
+  })
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch }

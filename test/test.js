@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter, polarToCartesian, cartesianToPolar } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -203,6 +203,15 @@ describe('Utils', function () {
     })
   })
 
+  describe('#quarterExtent', function () {
+    it('should return an array with proper start and end dates of quarter', function () {
+      assert.deepEqual(quarterExtent(1, 2019), [new Date('2019-01-01'), new Date('2019-03-31')])
+      assert.deepEqual(quarterExtent(2, 2020), [new Date('2020-04-01'), new Date('2020-06-30')])
+      assert.deepEqual(quarterExtent(3, 2021), [new Date('2021-07-01'), new Date('2021-09-30')])
+      assert.deepEqual(quarterExtent(4, 2022), [new Date('2022-10-01'), new Date('2022-12-31')])
+    })
+  })
+
   describe('#polarToCartesian', function () {
     it('should convert radius and angle to proper x and y coordinates', function () {
       assert.deepEqual(polarToCartesian(1, 0.0 * Math.PI / 4.0), { x: 1, y: 0 })
@@ -217,7 +226,7 @@ describe('Utils', function () {
     })
   })
   describe('#cartesianToPolar', function () {
-    it('should convert x and y coordinates to proper radius and angle ', function () {
+    it('should convert x and y coordinates to proper radius and angle', function () {
       assert.deepEqual(cartesianToPolar(1, 0), { r: 1, angle: 0.0 * Math.PI / 4.0 })
       assert.deepEqual(cartesianToPolar(0.7071067811865476, 0.7071067811865475), { r: 1, angle: 1.0 * Math.PI / 4.0 })
       assert.deepEqual(cartesianToPolar(0, 1), { r: 1, angle: 2.0 * Math.PI / 4.0 })
@@ -227,6 +236,17 @@ describe('Utils', function () {
       assert.deepEqual(cartesianToPolar(0, -1), { r: 1, angle: 6.0 * Math.PI / 4.0 })
       assert.deepEqual(cartesianToPolar(0.7071067811865474, -0.7071067811865477), { r: 1, angle: 7.0 * Math.PI / 4.0 })
       assert.deepEqual(cartesianToPolar(1, 0), { r: 1, angle: 0.0 * Math.PI / 4.0 })
+    })
+  })
+  describe('#fuzzzySearch', function () {
+    it('should find elements matching search value', function () {
+      const list = ['Mickiewicz', 'Słowacki', 'Lechoń', 'Wierzyński', 'Krasiński', 'Tuwim', 'Sienkiewicz']
+      assert.deepEqual(fuzzySearch(list, 's'), ['Słowacki', 'Wierzyński', 'Krasiński', 'Sienkiewicz'])
+      assert.deepEqual(fuzzySearch(list, 'sie'), ['Sienkiewicz'])
+      assert.deepEqual(fuzzySearch(list, 'wu'), [])
+      assert.deepEqual(fuzzySearch(list, 'lEcHoŃ'), ['Lechoń'])
+      assert.deepEqual(fuzzySearch(list, 'ski'), ['Słowacki', 'Wierzyński', 'Krasiński', 'Sienkiewicz'])
+      assert.deepEqual(fuzzySearch(list, 'icz'), ['Mickiewicz', 'Sienkiewicz'])
     })
   })
 })
