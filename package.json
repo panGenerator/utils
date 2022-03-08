@@ -1,6 +1,6 @@
 {
   "name": "@pangenerator/utils",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
