@@ -499,7 +499,7 @@ const sepCase = (str, sep = '-') => {
 
 /**
  * Convert string to snake case
- * @alias module:utils.toSnakeCase
+ * @alias module:utils.snakeCase
  * @param {string} str - string to convert
  * @returns {string} snake cased string
  */
@@ -509,7 +509,7 @@ const snakeCase = (str) => {
 
 /**
  * Convert string to kebab case
- * @alias module:utils.toKebabCase
+ * @alias module:utils.kebabCase
  * @param {string} str - string to convert
  * @returns {string} kebab cased string
  */
@@ -519,7 +519,7 @@ const kebabCase = (str) => {
 
 /**
  * Convert string to camel case
- * @alias module:utils.toCamelCase
+ * @alias module:utils.camelCase
  * @param {string} str - string to convert
  * @returns {string} camel cased string
  */
