@@ -1,12 +1,13 @@
 {
   "name": "@pangenerator/utils",
-  "version": "2.5.1",
+  "version": "2.5.0",
   "description": "A collection of snippets for creative coding",
   "main": "utils.js",
   "scripts": {
     "rollup": "rollup --config src/rollup.config.js",
     "docs": "jsdoc2md --template src/README.hbs --files src/utils.js --separators --param-list-format list --property-list-format list --helper src/year.js> README.md",
     "build": "npm run rollup && npm run docs",
+    "pretest": "npm run build",
     "test": "mocha"
   },
   "files": [

@@ -44,9 +44,9 @@ Various functions used in javascript tools
         * [.distToSegment2(A, S, E)](#module_utils.distToSegment2) ⇒ <code>Number</code>
         * [.distToSegment(A, S, E)](#module_utils.distToSegment) ⇒ <code>Number</code>
         * [.sepCase(str)](#module_utils.sepCase) ⇒ <code>string</code>
-        * [.toSnakeCase(str)](#module_utils.toSnakeCase) ⇒ <code>string</code>
-        * [.toKebabCase(str)](#module_utils.toKebabCase) ⇒ <code>string</code>
-        * [.toCamelCase(str)](#module_utils.toCamelCase) ⇒ <code>string</code>
+        * [.snakeCase(str)](#module_utils.snakeCase) ⇒ <code>string</code>
+        * [.kebabCase(str)](#module_utils.kebabCase) ⇒ <code>string</code>
+        * [.camelCase(str)](#module_utils.camelCase) ⇒ <code>string</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
         * [~Circle](#module_utils..Circle) : <code>Object</code>
@@ -568,9 +568,9 @@ Convert string to custom separator case
 
 * * *
 
-<a name="module_utils.toSnakeCase"></a>
+<a name="module_utils.snakeCase"></a>
 
-### utils.toSnakeCase(str) ⇒ <code>string</code>
+### utils.snakeCase(str) ⇒ <code>string</code>
 Convert string to snake case
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
@@ -582,9 +582,9 @@ Convert string to snake case
 
 * * *
 
-<a name="module_utils.toKebabCase"></a>
+<a name="module_utils.kebabCase"></a>
 
-### utils.toKebabCase(str) ⇒ <code>string</code>
+### utils.kebabCase(str) ⇒ <code>string</code>
 Convert string to kebab case
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
@@ -596,9 +596,9 @@ Convert string to kebab case
 
 * * *
 
-<a name="module_utils.toCamelCase"></a>
+<a name="module_utils.camelCase"></a>
 
-### utils.toCamelCase(str) ⇒ <code>string</code>
+### utils.camelCase(str) ⇒ <code>string</code>
 Convert string to camel case
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
