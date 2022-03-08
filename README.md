@@ -40,6 +40,13 @@ Various functions used in javascript tools
         * [.cartesianToPolar(x, y)](#module_utils.cartesianToPolar) ⇒ <code>Object</code>
         * [.pageOffset(elem)](#module_utils.pageOffset) ⇒ <code>Object</code>
         * [.fuzzySearch(list, searchValue)](#module_utils.fuzzySearch) ⇒ <code>Array</code>
+        * [.dist2(A, B)](#module_utils.dist2) ⇒ <code>Number</code>
+        * [.distToSegment2(A, S, E)](#module_utils.distToSegment2) ⇒ <code>Number</code>
+        * [.distToSegment(A, S, E)](#module_utils.distToSegment) ⇒ <code>Number</code>
+        * [.sepCase(str)](#module_utils.sepCase) ⇒ <code>string</code>
+        * [.toSnakeCase(str)](#module_utils.toSnakeCase) ⇒ <code>string</code>
+        * [.toKebabCase(str)](#module_utils.toKebabCase) ⇒ <code>string</code>
+        * [.toCamelCase(str)](#module_utils.toCamelCase) ⇒ <code>string</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
         * [~Circle](#module_utils..Circle) : <code>Object</code>
@@ -496,6 +503,109 @@ Fuzzy search element in list
 
 - list <code>Array</code> - Array of terms
 - searchValue <code>String</code> - search value to find
+
+
+* * *
+
+<a name="module_utils.dist2"></a>
+
+### utils.dist2(A, B) ⇒ <code>Number</code>
+Distance between two points (2D and 3D) squared
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Number</code> - squared distance between the points  
+**Params**
+
+- A <code>Point</code> - First point
+- B <code>Point</code> - Second point
+
+
+* * *
+
+<a name="module_utils.distToSegment2"></a>
+
+### utils.distToSegment2(A, S, E) ⇒ <code>Number</code>
+Distance between point and segment squared
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Number</code> - squared distance between the point and the segment  
+**Params**
+
+- A <code>Point</code> - First point
+- S <code>Point</code> - Segment start
+- E <code>Point</code> - Segment end
+
+
+* * *
+
+<a name="module_utils.distToSegment"></a>
+
+### utils.distToSegment(A, S, E) ⇒ <code>Number</code>
+Distance between point and segment
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Number</code> - distance between the point and the segment  
+**Params**
+
+- A <code>Point</code> - First point
+- S <code>Point</code> - Segment start
+- E <code>Point</code> - Segment end
+
+
+* * *
+
+<a name="module_utils.sepCase"></a>
+
+### utils.sepCase(str) ⇒ <code>string</code>
+Convert string to custom separator case
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - custom cased string  
+**Params**
+
+- str <code>string</code> - string to convert
+
+
+* * *
+
+<a name="module_utils.toSnakeCase"></a>
+
+### utils.toSnakeCase(str) ⇒ <code>string</code>
+Convert string to snake case
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - snake cased string  
+**Params**
+
+- str <code>string</code> - string to convert
+
+
+* * *
+
+<a name="module_utils.toKebabCase"></a>
+
+### utils.toKebabCase(str) ⇒ <code>string</code>
+Convert string to kebab case
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - kebab cased string  
+**Params**
+
+- str <code>string</code> - string to convert
+
+
+* * *
+
+<a name="module_utils.toCamelCase"></a>
+
+### utils.toCamelCase(str) ⇒ <code>string</code>
+Convert string to camel case
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - camel cased string  
+**Params**
+
+- str <code>string</code> - string to convert
 
 
 * * *

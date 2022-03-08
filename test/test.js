@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -247,6 +247,84 @@ describe('Utils', function () {
       assert.deepEqual(fuzzySearch(list, 'lEcHoŃ'), ['Lechoń'])
       assert.deepEqual(fuzzySearch(list, 'ski'), ['Słowacki', 'Wierzyński', 'Krasiński', 'Sienkiewicz'])
       assert.deepEqual(fuzzySearch(list, 'icz'), ['Mickiewicz', 'Sienkiewicz'])
+    })
+  })
+
+  describe('#dist2()', function () {
+    it('should return 0 if the points are the same', function () {
+      assert.equal(dist2({ x: 10, y: 100 }, { x: 10, y: 100 }), 0)
+    })
+    it('should return squared distance beetween two points in 2D', function () {
+      assert.equal(dist2({ x: 0, y: 100 }, { x: 100, y: 500 }), 170000)
+    })
+    it('should return squared distance beetween two points in 3D', function () {
+      assert.equal(dist2({ x: 0, y: 100, z: 200 }, { x: 100, y: 500, z: 300 }), 180000)
+    })
+  })
+
+  describe('#distToSegment()', function () {
+    it('should return 0 if the point is on segment', function () {
+      assert.equal(distToSegment({ x: 50, y: 100 }, { x: 0, y: 100 }, { x: 100, y: 100 }), 0)
+    })
+    it('should return distance beetween point and segment', function () {
+      assert.equal(distToSegment({ x: 0, y: 100 }, { x: 100, y: 500 }, { x: 10, y: 100 }), 10)
+    })
+  })
+
+  describe('#distToSegment2()', function () {
+    it('should return 0 if the point is on segment', function () {
+      assert.equal(distToSegment2({ x: 50, y: 100 }, { x: 0, y: 100 }, { x: 100, y: 100 }), 0)
+    })
+    it('should return squared distance beetween point and segment', function () {
+      assert.equal(distToSegment2({ x: 0, y: 100 }, { x: 100, y: 500 }, { x: 10, y: 100 }), 100)
+    })
+  })
+
+  describe('#sepCase()', function () {
+    it('should return a camel cased string as custom case', function () {
+      assert.equal(sepCase('SomeCamelString', '*'), 'some*camel*string')
+    })
+    it('should return a kebab cased string as custom case', function () {
+      assert.equal(sepCase('some-kebab-string', '|'), 'some|kebab|string')
+    })
+    it('should return string with polish diacritics as custom case', function () {
+      assert.equal(sepCase('zażółć gęślą jaźń', '$'), 'zazolc$gesla$jazn')
+    })
+  })
+
+  describe('#snakeCase()', function () {
+    it('should return a camel cased string as snake case', function () {
+      assert.equal(snakeCase('SomeCamelString'), 'some_camel_string')
+    })
+    it('should return a kebab cased string as snake case', function () {
+      assert.equal(snakeCase('some-kebab-string'), 'some_kebab_string')
+    })
+    it('should return string with polish diacritics as snake case', function () {
+      assert.equal(snakeCase('zażółć gęślą jaźń'), 'zazolc_gesla_jazn')
+    })
+  })
+
+  describe('#kebabCase()', function () {
+    it('should return a camel cased string as kebab case', function () {
+      assert.equal(kebabCase('SomeCamelString'), 'some-camel-string')
+    })
+    it('should return a snake cased string as kebab case', function () {
+      assert.equal(kebabCase('some_snake_string'), 'some-snake-string')
+    })
+    it('should return string with polish diacritics as kebab case', function () {
+      assert.equal(kebabCase('zażółć gęślą jaźń'), 'zazolc-gesla-jazn')
+    })
+  })
+
+  describe('#camelCase()', function () {
+    it('should return a camel cased string as camel case', function () {
+      assert.equal(camelCase('some-kebab-string'), 'someKebabString')
+    })
+    it('should return a snake cased string as camel case', function () {
+      assert.equal(camelCase('some_snake_string'), 'someSnakeString')
+    })
+    it('should return string with polish diacritics as camel case', function () {
+      assert.equal(camelCase('zażółć gęślą jaźń'), 'zazolcGeslaJazn')
     })
   })
 })

@@ -140,7 +140,7 @@ const square = (a) => {
  * @returns {Number} distance between the points
  */
 const dist = (A, B) => {
-  return Math.sqrt(square(B.x - A.x) + square(B.y - A.y) + ((A.z !== undefined && B.z !== undefined) ? square(B.z - A.z) : 0))
+  return Math.sqrt(dist2(A, B))
 }
 
 /**
@@ -225,6 +225,7 @@ const timestampName = () => {
 const randomIndex = (N) => {
   return Math.floor(Math.random() * N)
 }
+
 /**
  * Copy array
  * @alias module:utils.copyArray
@@ -307,6 +308,7 @@ const loadJSON = (address, callback) => {
 }
 
 const table = { Ą: 'A', Ć: 'C', Ę: 'E', Ł: 'L', Ń: 'N', Ó: 'O', Ś: 'S', Ź: 'Z', Ż: 'Z', ą: 'a', ć: 'c', ę: 'e', ł: 'l', ń: 'n', ó: 'o', ś: 's', ź: 'z', ż: 'z' }
+
 /**
  * Remove polish diacritics
  * @alias module:utils.removeDiacritics
@@ -435,4 +437,100 @@ const fuzzySearch = (list, searchValue) => {
   })
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch }
+/**
+ * Distance between two points (2D and 3D) squared
+ * @alias module:utils.dist2
+ * @param {Point} A - First point
+ * @param {Point} B - Second point
+ * @returns {Number} squared distance between the points
+ */
+const dist2 = (A, B) => {
+  return square(B.x - A.x) + square(B.y - A.y) + ((A.z !== undefined && B.z !== undefined) ? square(B.z - A.z) : 0)
+}
+
+/**
+ * Distance between point and segment squared
+ * @alias module:utils.distToSegment2
+ * @param {Point} A - First point
+ * @param {Point} S - Segment start
+ * @param {Point} E - Segment end
+ * @returns {Number} squared distance between the point and the segment
+ */
+const distToSegment2 = (A, S, E) => {
+  const l2 = dist2(S, E)
+
+  if (l2 === 0) return dist2(A, S)
+
+  const t = ((A.x - S.x) * (E.x - S.x) + (A.y - S.y) * (E.y - S.y)) / l2
+
+  if (t < 0) return dist2(A, S)
+  if (t > 1) return dist2(A, E)
+
+  return dist2(A, { x: S.x + t * (E.x - S.x), y: S.y + t * (E.y - S.y) })
+}
+
+/**
+ * Distance between point and segment
+ * @alias module:utils.distToSegment
+ * @param {Point} A - First point
+ * @param {Point} S - Segment start
+ * @param {Point} E - Segment end
+ * @returns {Number} distance between the point and the segment
+ */
+const distToSegment = (A, S, E) => {
+  return Math.sqrt(distToSegment2(A, S, E))
+}
+
+/**
+ * Convert string to custom separator case
+ * @alias module:utils.sepCase
+ * @param {string} str - string to convert
+ * @returns {string} custom cased string
+ */
+const sepCase = (str, sep = '-') => {
+  const text = removeDiacritics(str)
+  return text
+    .replace(/[A-Z]/g, (letter, index) => {
+      const lcLet = letter.toLowerCase()
+      return index ? sep + lcLet : lcLet
+    })
+    .replace(/([-_ ]){1,}/g, sep)
+}
+
+/**
+ * Convert string to snake case
+ * @alias module:utils.toSnakeCase
+ * @param {string} str - string to convert
+ * @returns {string} snake cased string
+ */
+const snakeCase = (str) => {
+  return sepCase(str, '_')
+}
+
+/**
+ * Convert string to kebab case
+ * @alias module:utils.toKebabCase
+ * @param {string} str - string to convert
+ * @returns {string} kebab cased string
+ */
+const kebabCase = (str) => {
+  return sepCase(str, '-')
+}
+
+/**
+ * Convert string to camel case
+ * @alias module:utils.toCamelCase
+ * @param {string} str - string to convert
+ * @returns {string} camel cased string
+ */
+const camelCase = (str) => {
+  const text = removeDiacritics(str)
+  return (text.slice(0, 1).toLowerCase() + text.slice(1))
+    .replace(/([-_ ]){1,}/g, ' ')
+    .split(/[-_ ]/)
+    .reduce((cur, acc) => {
+      return cur + acc[0].toUpperCase() + acc.substring(1)
+    })
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase }
