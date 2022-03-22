@@ -32,6 +32,7 @@ Various functions used in javascript tools
         * [.precision(value, precision)](#module_utils.precision) ⇒ <code>Number</code>
         * [.loadJSON(address, callback)](#module_utils.loadJSON)
         * [.removeDiacritics(str)](#module_utils.removeDiacritics) ⇒ <code>String</code>
+        * [.removeNonAlphaNumeric(str)](#module_utils.removeNonAlphaNumeric) ⇒ <code>String</code>
         * [.splitChunks(str, n, discard)](#module_utils.splitChunks) ⇒ <code>Array</code>
         * [.getQuarter(d)](#module_utils.getQuarter) ⇒ <code>Array</code>
         * [.quarterExtent(quarter, year)](#module_utils.quarterExtent) ⇒ <code>Array</code>
@@ -47,6 +48,12 @@ Various functions used in javascript tools
         * [.snakeCase(str)](#module_utils.snakeCase) ⇒ <code>string</code>
         * [.kebabCase(str)](#module_utils.kebabCase) ⇒ <code>string</code>
         * [.camelCase(str)](#module_utils.camelCase) ⇒ <code>string</code>
+        * [.contains(elem, arr)](#module_utils.contains) ⇒ <code>boolean</code>
+        * [.getCSS(parentElement)](#module_utils.getCSS) ⇒ <code>string</code>
+        * [.appendCSS(cssText, element)](#module_utils.appendCSS)
+        * [.getSVGString(svgNode)](#module_utils.getSVGString) ⇒ <code>string</code>
+        * [.svgStringToImage(svgString, width, height, format, transparent, callback)](#module_utils.svgStringToImage)
+        * [.svgToUri(svgNode)](#module_utils.svgToUri) ⇒ <code>string</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
         * [~Circle](#module_utils..Circle) : <code>Object</code>
@@ -388,6 +395,20 @@ Remove polish diacritics
 
 * * *
 
+<a name="module_utils.removeNonAlphaNumeric"></a>
+
+### utils.removeNonAlphaNumeric(str) ⇒ <code>String</code>
+Remove all non alphanumeric characters
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>String</code> - string without non alphanumeric characters  
+**Params**
+
+- str <code>String</code> - string with non alphanumeric characters
+
+
+* * *
+
 <a name="module_utils.splitChunks"></a>
 
 ### utils.splitChunks(str, n, discard) ⇒ <code>Array</code>
@@ -606,6 +627,95 @@ Convert string to camel case
 **Params**
 
 - str <code>string</code> - string to convert
+
+
+* * *
+
+<a name="module_utils.contains"></a>
+
+### utils.contains(elem, arr) ⇒ <code>boolean</code>
+Check if array contains
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>boolean</code> - - true when element is in array  
+**Params**
+
+- elem <code>any</code> - element to find in array
+- arr <code>Array</code> - array to look in
+
+
+* * *
+
+<a name="module_utils.getCSS"></a>
+
+### utils.getCSS(parentElement) ⇒ <code>string</code>
+Get CSS Styles from element
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - - extracted CSS  
+**Params**
+
+- parentElement <code>HTMLElement</code> - Element to get styles from
+
+
+* * *
+
+<a name="module_utils.appendCSS"></a>
+
+### utils.appendCSS(cssText, element)
+Append CSS to element
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Params**
+
+- cssText <code>string</code> - CSS text to append
+- element <code>HTMLElement</code> - element to append CSS to
+
+
+* * *
+
+<a name="module_utils.getSVGString"></a>
+
+### utils.getSVGString(svgNode) ⇒ <code>string</code>
+Get SVG string from node
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - - svg as string  
+**Params**
+
+- svgNode <code>HTMLElement</code> - svg node to get text from
+
+
+* * *
+
+<a name="module_utils.svgStringToImage"></a>
+
+### utils.svgStringToImage(svgString, width, height, format, transparent, callback)
+Convert SVG string to image and call the callback
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Params**
+
+- svgString <code>string</code> - SVG string to convert
+- width <code>Number</code> - width of output image
+- height <code>Number</code> - height of output image
+- format <code>string</code> - format of output image
+- transparent <code>boolean</code> - transparency flag
+- callback <code>function</code> - function to call when ready
+
+
+* * *
+
+<a name="module_utils.svgToUri"></a>
+
+### utils.svgToUri(svgNode) ⇒ <code>string</code>
+Convert SVG to data uri
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>string</code> - - uri data scheme string  
+**Params**
+
+- svgNode <code>HTMLElement</code> - SVG element to get uri from
 
 
 * * *

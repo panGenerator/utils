@@ -318,6 +318,14 @@ const table = { Ą: 'A', Ć: 'C', Ę: 'E', Ł: 'L', Ń: 'N', Ó: 'O', Ś: 'S', �
 const removeDiacritics = (str) => str.replace(/([ĄĆĘŁŃÓŚŹŻąćęłńóśźż])/g, function (l) { return table[l] })
 
 /**
+ * Remove all non alphanumeric characters
+ * @alias module:utils.removeNonAlphaNumeric
+ * @param {String} str - string with non alphanumeric characters
+ * @returns {String} string without non alphanumeric characters
+ */
+const removeNonAlphaNumeric = (str) => str.replace(/[^A-Za-z0-9]/g, '')
+
+/**
  * Split string to N sized chunks
  * @alias module:utils.splitChunks
  * @param {String} str - string to split
@@ -489,6 +497,7 @@ const distToSegment = (A, S, E) => {
  */
 const sepCase = (str, sep = '-') => {
   const text = removeDiacritics(str)
+  // text = removeNonAlphaNumeric(text)
   return text
     .replace(/[A-Z]/g, (letter, index) => {
       const lcLet = letter.toLowerCase()
@@ -525,6 +534,7 @@ const kebabCase = (str) => {
  */
 const camelCase = (str) => {
   const text = removeDiacritics(str)
+  // text = removeNonAlphaNumeric(text)
   return (text.slice(0, 1).toLowerCase() + text.slice(1))
     .replace(/([-_ ]){1,}/g, ' ')
     .split(/[-_ ]/)
@@ -533,4 +543,149 @@ const camelCase = (str) => {
     })
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase }
+/**
+ * Check if array contains
+ * @alias module:utils.contains
+ * @param {any} elem - element to find in array
+ * @param {Array} arr - array to look in
+ * @returns {boolean} - true when element is in array
+ */
+const contains = (elem, arr) => {
+  return arr.indexOf(elem) !== -1
+}
+
+/**
+ * Get CSS Styles from element
+ * @alias module:utils.getCSS
+ * @param {HTMLElement} parentElement - Element to get styles from
+ * @returns {string} - extracted CSS
+ */
+const getCSS = (parentElement) => {
+  const selectorTextArr = []
+
+  // Add Parent element Id and Classes to the list
+  selectorTextArr.push('#' + parentElement.id)
+  for (let c = 0; c < parentElement.classList.length; c++) {
+    if (!contains('.' + parentElement.classList[c], selectorTextArr)) { selectorTextArr.push('.' + parentElement.classList[c]) }
+  }
+
+  // Add Children element Ids and Classes to the list
+  const nodes = parentElement.getElementsByTagName('*')
+  for (let i = 0; i < nodes.length; i++) {
+    const id = nodes[i].id
+    if (!contains('#' + id, selectorTextArr)) { selectorTextArr.push('#' + id) }
+
+    const classes = nodes[i].classList
+    for (let c = 0; c < classes.length; c++) {
+      if (!contains('.' + classes[c], selectorTextArr)) { selectorTextArr.push('.' + classes[c]) }
+    }
+  }
+  // Extract CSS Rules
+  let extractedCSSText = ''
+  for (let i = 0; i < document.styleSheets.length; i++) {
+    var s = document.styleSheets[i]
+    try {
+      if (!s.cssRules) continue
+    } catch (e) {
+      if (e.name !== 'SecurityError') throw e // for Firefox
+      continue
+    }
+
+    var cssRules = s.cssRules
+    for (var r = 0; r < cssRules.length; r++) {
+      if (contains(cssRules[r].selectorText, selectorTextArr)) { extractedCSSText += cssRules[r].cssText }
+    }
+  }
+  return extractedCSSText
+}
+
+/**
+ * Append CSS to element
+ * @alias module:utils.appendCSS
+ * @param {string} cssText - CSS text to append
+ * @param {HTMLElement} element - element to append CSS to
+ */
+const appendCSS = (cssText, element) => {
+  var styleElement = document.createElement('style')
+  styleElement.setAttribute('type', 'text/css')
+  styleElement.innerHTML = cssText
+  var refNode = element.hasChildNodes() ? element.children[0] : null
+  element.insertBefore(styleElement, refNode)
+}
+
+/**
+ * Get SVG string from node
+ * @alias module:utils.getSVGString
+ * @param {HTMLElement} svgNode - svg node to get text from
+ * @returns {string} - svg as string
+ */
+const getSVGString = (svgNode) => {
+  svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink')
+  var cssStyleText = getCSS(svgNode)
+  appendCSS(cssStyleText, svgNode)
+
+  var serializer = new XMLSerializer()
+  var svgString = serializer.serializeToString(svgNode)
+  svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink=') // Fix root xlink without namespace
+  svgString = svgString.replace(/NS\d+:href/g, 'xlink:href') // Safari NS namespace fix
+
+  return svgString
+}
+
+/**
+ * Convert SVG string to image and call the callback
+ * @alias module:utils.svgStringToImage
+ * @param {string} svgString - SVG string to convert
+ * @param {Number} width - width of output image
+ * @param {Number} height - height of output image
+ * @param {string} format - format of output image
+ * @param {boolean} transparent - transparency flag
+ * @param {Function} callback - function to call when ready
+ */
+const svgStringToImage = (svgString, width, height, format, transparent, callback) => {
+  format = format || 'png'
+
+  var imgsrc = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString))) // Convert SVG string to data URL
+
+  var canvas = document.createElement('canvas')
+  var context = canvas.getContext('2d')
+
+  canvas.width = width
+  canvas.height = height
+
+  var image = new Image()
+  image.onload = () => {
+    context.clearRect(0, 0, width, height)
+    if (!transparent) {
+      context.beginPath()
+      context.fillStyle = '#fff'
+      context.fillRect(0, 0, canvas.width, canvas.height)
+    }
+    context.drawImage(image, 0, 0, width, height)
+    if (callback) callback(canvas.toDataURL())
+  }
+  image.src = imgsrc
+}
+
+/**
+ * Convert SVG to data uri
+ * @alias module:utils.svgToUri
+ * @param {HTMLElement} svgNode - SVG element to get uri from
+ * @returns {string} - uri data scheme string
+ */
+const svgToUri = (svgNode) => {
+  const serializer = new XMLSerializer()
+  let source = serializer.serializeToString(svgNode)
+  if (!source.match(/^<svg[^>]+xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)) {
+    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"')
+  }
+  if (!source.match(/^<svg[^>]+"http:\/\/www\.w3\.org\/1999\/xlink"/)) {
+    source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"')
+  }
+  source = '<?xml version="1.0" standalone="no"?>\r\n' + source
+
+  // convert svg source to URI data scheme.
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source)
+}
+
+export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase, contains, getCSS, appendCSS, getSVGString, svgStringToImage, svgToUri }

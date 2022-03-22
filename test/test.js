@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -178,6 +178,13 @@ describe('Utils', function () {
       assert.equal(removeDiacritics('ĄĆĘŁŃÓŚŹŻąćęłńóśźż'), 'ACELNOSZZacelnoszz')
     })
   })
+
+  describe('#removeNonAlphaNumeric', function () {
+    it('should return a string without any alpha numeric characters', function () {
+      assert.equal(removeNonAlphaNumeric('a!b@c#d$e%f^g&h*i(j)k_l-m=n+1234567890 ,.<>/?\'|"\\[]{}~`£§'), 'abcdefghijklmn1234567890')
+    })
+  })
+
   describe('#splitChunks', function () {
     it('should return an array of chunks', function () {
       assert.deepEqual(splitChunks('1234567890', 4), ['1234', '5678', '90'])
