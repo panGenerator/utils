@@ -13,7 +13,7 @@ export default class TweakpaneSettings {
 
         Object.keys(g.settings.controls).forEach((s) => {
 
-          const options = shallowCopyExcluding(g.settings.controls[s], 'val')
+          const options = this.shallowCopyExcluding(g.settings.controls[s], 'val')
           options.presetKey = (g.settings.prefix) ? g.settings.prefix + "_" + s : null
           options.label = (options.label) ? options.label : s
 
@@ -163,4 +163,8 @@ export default class TweakpaneSettings {
     }
   }
 
+  shallowCopyExcluding (obj, prop)  {
+    const { [prop]: _, ...copy } = obj
+    return copy
+  }
 }
