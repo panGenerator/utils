@@ -54,6 +54,7 @@ Various functions used in javascript tools
         * [.getSVGString(svgNode)](#module_utils.getSVGString) ⇒ <code>string</code>
         * [.svgStringToImage(svgString, width, height, format, transparent, callback)](#module_utils.svgStringToImage)
         * [.svgToUri(svgNode)](#module_utils.svgToUri) ⇒ <code>string</code>
+        * [.shallowCopyExcluding(obj, prop)](#module_utils.shallowCopyExcluding) ⇒ <code>Object</code>
     * _inner_
         * [~Point](#module_utils..Point) : <code>Object</code>
         * [~Circle](#module_utils..Circle) : <code>Object</code>
@@ -720,6 +721,21 @@ Convert SVG to data uri
 
 * * *
 
+<a name="module_utils.shallowCopyExcluding"></a>
+
+### utils.shallowCopyExcluding(obj, prop) ⇒ <code>Object</code>
+Copy object excluding property
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Object</code> - - copied object  
+**Params**
+
+- obj <code>Object</code> - Object to copy
+- prop <code>string</code> - property name
+
+
+* * *
+
 <a name="module_utils..Point"></a>
 
 ### utils~Point : <code>Object</code>
@@ -747,4 +763,4 @@ Convert SVG to data uri
 * * *
 
 
-Copyright &copy; 2022 panGenerator
+Copyright &copy; 2023 panGenerator

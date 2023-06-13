@@ -1,4 +1,4 @@
-const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase } = require('../utils')
+const { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, polarToCartesian, cartesianToPolar, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase, shallowCopyExcluding } = require('../utils')
 const assert = require('assert')
 
 describe('Utils', function () {
@@ -332,6 +332,12 @@ describe('Utils', function () {
     })
     it('should return string with polish diacritics as camel case', function () {
       assert.equal(camelCase('zażółć gęślą jaźń'), 'zazolcGeslaJazn')
+    })
+  })
+
+  describe('#shallowCopyExcluding()', function () {
+    it('should return a copy of objecy without specified property', function () {
+      assert.deepEqual(shallowCopyExcluding({ a: 'one', b: 'two' }, 'a'), { b: 'two' })
     })
   })
 })

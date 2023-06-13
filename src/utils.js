@@ -1,3 +1,4 @@
+import TweakpaneSettings from './TweakpaneSettings'
 /**
  * Various functions used in javascript tools
  * @module utils
@@ -688,4 +689,17 @@ const svgToUri = (svgNode) => {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source)
 }
 
-export default { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase, contains, getCSS, appendCSS, getSVGString, svgStringToImage, svgToUri }
+/**
+ * Copy object excluding property
+ * @alias module:utils.shallowCopyExcluding
+ * @param {Object} obj - Object to copy
+ * @param {string} prop - property name
+ * @returns {Object} - copied object
+ */
+
+const shallowCopyExcluding = (obj, prop) => {
+  const { [prop]: _, ...copy } = obj
+  return copy
+}
+
+export default { TweakpaneSettings, map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase, contains, getCSS, appendCSS, getSVGString, svgStringToImage, svgToUri, shallowCopyExcluding }
