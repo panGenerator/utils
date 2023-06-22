@@ -15,7 +15,8 @@
     "node": ">=16.0.0 <20.0.0"
   },
   "files": [
-    "utils.js"
+    "utils.js",
+    "README.md"
   ],
   "banner": "'/*!*/'",
   "homepage": "https://github.com/panGenerator/utils#readme",
