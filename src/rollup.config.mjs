@@ -1,7 +1,7 @@
-const { terser } = require('rollup-plugin-terser')
-const banner = require('./banner.js')
+import terser from '@rollup/plugin-terser'
+import banner from './banner.mjs'
 
-module.exports = {
+export default {
   input: 'src/main.js',
   output: {
     banner,
