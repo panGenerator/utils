@@ -6,7 +6,6 @@ export default class TweakpaneSettings {
 
     this.settingsName = settingsName ?? ctrl.title + "-settings"
     this.ctrl = ctrl
-
     this.presets = controllables[0].settings.presets
 
     Object.keys(this.presets).forEach((p) => {
@@ -24,7 +23,7 @@ export default class TweakpaneSettings {
           options.presetKey = (g.settings.name) ? snakeCase(g.settings.name) + "_$" + s : null
           options.label = (options.label) ? options.label : s
 
-          // shotrcut props
+          // shortcut props
           Object.defineProperty(g, '$' + s, {
             get: () => {
               return g.settings.controls[s].val
@@ -63,13 +62,12 @@ export default class TweakpaneSettings {
         })
       }
 
-
       if ('monitors' in g.settings) {
         Object.keys(g.settings.monitors).forEach((m) => {
           const options = g.settings.monitors_options[m]
           folder.addMonitor(g.settings.monitors, m, options)
 
-          // shotrcut props
+          // shortcut props
           Object.defineProperty(g, '$' + m, {
             get: () => {
               return g.settings.monitors[m]
