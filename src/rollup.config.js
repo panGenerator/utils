@@ -2,7 +2,7 @@ const { terser } = require('rollup-plugin-terser')
 const banner = require('./banner.js')
 
 module.exports = {
-  input: 'src/utils.js',
+  input: 'src/main.js',
   output: {
     banner,
     name: 'utils',

@@ -1,10 +1,17 @@
+import { snakeCase, shallowCopyExcluding } from "./utils.js"
+
 export default class TweakpaneSettings {
 
-  constructor(ctrl, controllables, settingsName = null, default_settings = null) {
+  constructor(ctrl, controllables, settingsName = null) {
 
     this.settingsName = settingsName ?? ctrl.title + "-settings"
     this.ctrl = ctrl
 
+    this.presets = controllables[0].settings.presets
+
+    Object.keys(this.presets).forEach((p) => {
+      this.presets[p] = JSON.parse(this.presets[p])
+    })
     controllables.forEach((g, i) => {
 
       const folder = (g.settings.name) ? ctrl.addFolder({ title: g.settings.name }) : ctrl
@@ -13,8 +20,8 @@ export default class TweakpaneSettings {
 
         Object.keys(g.settings.controls).forEach((s) => {
 
-          const options = this.shallowCopyExcluding(g.settings.controls[s], 'val')
-          options.presetKey = (g.settings.prefix) ? g.settings.prefix + "_" + s : null
+          const options = shallowCopyExcluding(g.settings.controls[s], 'val')
+          options.presetKey = (g.settings.name) ? snakeCase(g.settings.name) + "_$" + s : null
           options.label = (options.label) ? options.label : s
 
           // shotrcut props
@@ -32,10 +39,7 @@ export default class TweakpaneSettings {
           if (options.callback) {
             input.on('change', (ev) => { options.callback(ev) })
           }
-
-
         })
-
       }
 
       if ('buttons' in g.settings) {
@@ -74,18 +78,24 @@ export default class TweakpaneSettings {
               g.settings.monitors[m] = v
             }
           })
-
         })
       }
-
-
     })
 
-    this.default_settings = default_settings ?? JSON.stringify(ctrl.exportPreset())
+    const presets = ctrl.addFolder({ title: "Presets", expanded: false })
 
-    //ctrl.addSeparator()
-    const presets = ctrl.addFolder({ title: "presets", expanded: false })
-    // ---------------------
+    presets.addBlade({
+      view: 'list',
+      label: 'preset',
+      options:
+        Object.keys(this.presets).map((p) => { return { text: p, value: p } }),
+      value: Object.keys(this.presets)[0],
+
+    }).on('change', (ev) => {
+      this.loadSettings(this.presets[ev.value])
+    })
+
+    presets.addSeparator()
 
     presets.addButton({ title: 'Store settings' }).on('click', () => {
       console.log("save settings")
@@ -99,8 +109,10 @@ export default class TweakpaneSettings {
 
     presets.addButton({ title: 'Download settings' }).on('click', () => {
       console.log("download settings")
+
       const fileName = settingsName + "_" + new Date().toLocaleString().replace(/[^0-9]+/g, '-') + ".json"
       const url = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ctrl.exportPreset(), null, 2));
+      console.log(JSON.stringify(ctrl.exportPreset()))
       const link = document.createElement("a")
       link.download = fileName
       link.href = url
@@ -120,7 +132,6 @@ export default class TweakpaneSettings {
 
         if (input.files && input.files[0]) {
           const file = input.files[0];
-
           let reader = new FileReader()
           reader.readAsText(file)
 
@@ -142,29 +153,30 @@ export default class TweakpaneSettings {
     })
 
     presets.addButton({ title: 'Default settings' }).on('click', () => {
-      console.log("reset settings to default:", default_settings)
-      ctrl.importPreset(JSON.parse(default_settings))
+      if (this.presets.default) {
+        this.loadSettings(this.presets.default)
+      }
     })
-
-    //ctrl.addSeparator()
-    // ---------------------
-
   }
 
-  loadSettings () {
+  loadSettings (settings = null) {
     console.log("restore settings")
-    const preset = JSON.parse(localStorage.getItem(this.settingsName))
-    if (preset) {
-      console.log("loaded settings from local storage:", preset)
-      this.ctrl.importPreset(preset)
+    console.log('presets', this.presets)
+    if (settings) {
+      this.ctrl.importPreset(settings)
+      console.log("loaded settings:", settings)
     } else {
-      console.log("loaded default settings:", this.default_settings)
-      this.ctrl.importPreset(this.default_settings)
+      if (this.presets.default) {
+        this.ctrl.importPreset(this.presets.default)
+        console.log("loaded default settings:", this.presets.default)
+      }
+      else {
+        const localPreset = localStorage.getItem(this.settingsName)
+        if (localPreset) {
+          this.ctrl.importPreset(JSON.parse(localPreset))
+          console.log("loaded settings from local storage:", preset)
+        }
+      }
     }
-  }
-
-  shallowCopyExcluding (obj, prop)  {
-    const { [prop]: _, ...copy } = obj
-    return copy
   }
 }

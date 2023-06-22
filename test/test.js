@@ -336,7 +336,7 @@ describe('Utils', function () {
   })
 
   describe('#shallowCopyExcluding()', function () {
-    it('should return a copy of objecy without specified property', function () {
+    it('should return a copy of object without specified property', function () {
       assert.deepEqual(shallowCopyExcluding({ a: 'one', b: 'two' }, 'a'), { b: 'two' })
     })
   })

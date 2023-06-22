@@ -1,4 +1,3 @@
-import TweakpaneSettings from './TweakpaneSettings'
 /**
  * Various functions used in javascript tools
  * @module utils
@@ -702,4 +701,4 @@ const shallowCopyExcluding = (obj, prop) => {
   return copy
 }
 
-export default { TweakpaneSettings, map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase, contains, getCSS, appendCSS, getSVGString, svgStringToImage, svgToUri, shallowCopyExcluding }
+export { map, clamp, random, randomDir, lerp, lerp3, lerpedPoints, square, dist, norm, degrees, radians, intersection, randomName, timestampName, randomIndex, copyArray, shuffleArray, filterUnique, lerpColor, precision, loadJSON, removeDiacritics, removeNonAlphaNumeric, splitChunks, getQuarter, quarterExtent, downloadDataUri, polarToCartesian, cartesianToPolar, pageOffset, fuzzySearch, dist2, distToSegment2, distToSegment, sepCase, snakeCase, kebabCase, camelCase, contains, getCSS, appendCSS, getSVGString, svgStringToImage, svgToUri, shallowCopyExcluding }
