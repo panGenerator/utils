@@ -13,7 +13,7 @@ export default class TweakpaneSettings {
       })
     }
     else {
-      presets = {}
+      this.presets = {}
     }
     controllables.forEach((g, i) => {
 
