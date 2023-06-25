@@ -7,10 +7,14 @@ export default class TweakpaneSettings {
     this.settingsName = settingsName ?? ctrl.title + "-settings"
     this.ctrl = ctrl
     this.presets = controllables[0].settings.presets
-
-    Object.keys(this.presets).forEach((p) => {
-      this.presets[p] = JSON.parse(this.presets[p])
-    })
+    if(this.presets){
+      Object.keys(this.presets).forEach((p) => {
+        this.presets[p] = JSON.parse(this.presets[p])
+      })
+    }
+    else {
+      presets = {}
+    }
     controllables.forEach((g, i) => {
 
       const folder = (g.settings.name) ? ctrl.addFolder({ title: g.settings.name }) : ctrl
@@ -82,18 +86,20 @@ export default class TweakpaneSettings {
 
     const presets = ctrl.addFolder({ title: "Presets", expanded: false })
 
-    presets.addBlade({
-      view: 'list',
-      label: 'preset',
-      options:
-        Object.keys(this.presets).map((p) => { return { text: p, value: p } }),
-      value: Object.keys(this.presets)[0],
+    if(Object.keys(this.presets).length>0){
+      presets.addBlade({
+        view: 'list',
+        label: 'preset',
+        options:
+          Object.keys(this.presets).map((p) => { return { text: p, value: p } }),
+        value: Object.keys(this.presets)[0],
 
-    }).on('change', (ev) => {
-      this.loadSettings(this.presets[ev.value])
-    })
+      }).on('change', (ev) => {
+        this.loadSettings(this.presets[ev.value])
+      })
 
-    presets.addSeparator()
+      presets.addSeparator()
+    }
 
     presets.addButton({ title: 'Store settings' }).on('click', () => {
       console.log("save settings")
