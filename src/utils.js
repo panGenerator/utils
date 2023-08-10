@@ -421,9 +421,9 @@ const quarterExtent = (quarter, year) => {
  * @alias module:utils.datesBetween
  * @param {Date} start - start date
  * @param {Date} end - end date
- * @returns {Array} all dates beetween start and end
+ * @returns {Array} all dates between start and end
  */
-const datesBeetween = (start, end) => {
+const datesBetween = (start, end) => {
   const output = [];
 
   for (let date = start; date <= end; date.setDate(date.getDate() + 1)) {
@@ -826,7 +826,7 @@ export {
   splitChunks,
   getQuarter,
   quarterExtent,
-  datesBeetween,
+  datesBetween,
   downloadDataUri,
   polarToCartesian,
   cartesianToPolar,

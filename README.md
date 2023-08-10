@@ -462,7 +462,7 @@ Get quarter extent
 Get all dates between two dates
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
-**Returns**: <code>Array</code> - all dates beetween start and end  
+**Returns**: <code>Array</code> - all dates between start and end  
 **Params**
 
 - start <code>Date</code> - start date

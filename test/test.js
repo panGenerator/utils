@@ -25,7 +25,7 @@ const {
   splitChunks,
   getQuarter,
   quarterExtent,
-  datesBeetween,
+  datesBetween,
   polarToCartesian,
   cartesianToPolar,
   fuzzySearch,
@@ -88,12 +88,12 @@ describe("Utils", function () {
     });
   });
   describe("#lerp()", function () {
-    it("should interpolate beetween two numbers", function () {
+    it("should interpolate between two numbers", function () {
       assert.equal(lerp(0, 100, 0.5), 50);
     });
   });
   describe("#lerp3()", function () {
-    it("should interpolate beetween two points in 3D", function () {
+    it("should interpolate between two points in 3D", function () {
       assert.deepEqual(
         lerp3({ x: 0, y: 100, z: 200 }, { x: 100, y: 50, z: 100 }, 0.5),
         { x: 50, y: 75, z: 150 }
@@ -120,13 +120,13 @@ describe("Utils", function () {
     it("should return 0 if the points are the same", function () {
       assert.equal(dist({ x: 10, y: 100 }, { x: 10, y: 100 }), 0);
     });
-    it("should return distance beetween two points in 2D", function () {
+    it("should return distance between two points in 2D", function () {
       assert.equal(
         dist({ x: 0, y: 100 }, { x: 100, y: 500 }),
         412.31056256176606
       );
     });
-    it("should return distance beetween two points in 3D", function () {
+    it("should return distance between two points in 3D", function () {
       assert.equal(
         dist({ x: 0, y: 100, z: 200 }, { x: 100, y: 500, z: 300 }),
         424.26406871192853
@@ -295,16 +295,16 @@ describe("Utils", function () {
       ]);
     });
   });
-  describe("#datesBeetween", function () {
+  describe("#datesBetween", function () {
     it("should return array of dates between start and end date", function () {
       assert.deepEqual(
-        datesBeetween(new Date("2019-01-01"), new Date("2019-01-03")),
+        datesBetween(new Date("2019-01-01"), new Date("2019-01-03")),
         [new Date("2019-01-01"), new Date("2019-01-02"), new Date("2019-01-03")]
       );
     });
     it("should return one date when start and end date are the same", function () {
       assert.deepEqual(
-        datesBeetween(new Date("2019-01-01"), new Date("2019-01-01")),
+        datesBetween(new Date("2019-01-01"), new Date("2019-01-01")),
         [new Date("2019-01-01")]
       );
     });
@@ -423,10 +423,10 @@ describe("Utils", function () {
     it("should return 0 if the points are the same", function () {
       assert.equal(dist2({ x: 10, y: 100 }, { x: 10, y: 100 }), 0);
     });
-    it("should return squared distance beetween two points in 2D", function () {
+    it("should return squared distance between two points in 2D", function () {
       assert.equal(dist2({ x: 0, y: 100 }, { x: 100, y: 500 }), 170000);
     });
-    it("should return squared distance beetween two points in 3D", function () {
+    it("should return squared distance between two points in 3D", function () {
       assert.equal(
         dist2({ x: 0, y: 100, z: 200 }, { x: 100, y: 500, z: 300 }),
         180000
@@ -441,7 +441,7 @@ describe("Utils", function () {
         0
       );
     });
-    it("should return distance beetween point and segment", function () {
+    it("should return distance between point and segment", function () {
       assert.equal(
         distToSegment({ x: 0, y: 100 }, { x: 100, y: 500 }, { x: 10, y: 100 }),
         10
@@ -456,7 +456,7 @@ describe("Utils", function () {
         0
       );
     });
-    it("should return squared distance beetween point and segment", function () {
+    it("should return squared distance between point and segment", function () {
       assert.equal(
         distToSegment2({ x: 0, y: 100 }, { x: 100, y: 500 }, { x: 10, y: 100 }),
         100
