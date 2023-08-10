@@ -36,6 +36,7 @@ Various functions used in javascript tools
         * [.splitChunks(str, n, discard)](#module_utils.splitChunks) ⇒ <code>Array</code>
         * [.getQuarter(d)](#module_utils.getQuarter) ⇒ <code>Array</code>
         * [.quarterExtent(quarter, year)](#module_utils.quarterExtent) ⇒ <code>Array</code>
+        * [.datesBetween(start, end)](#module_utils.datesBetween) ⇒ <code>Array</code>
         * [.downloadDataUri(options)](#module_utils.downloadDataUri)
         * [.polarToCartesian(r, angle)](#module_utils.polarToCartesian) ⇒ <code>Point</code>
         * [.cartesianToPolar(x, y)](#module_utils.cartesianToPolar) ⇒ <code>Object</code>
@@ -451,6 +452,21 @@ Get quarter extent
 
 - quarter <code>Number</code> - quarter (1-4)
 - year <code>Number</code> - full year
+
+
+* * *
+
+<a name="module_utils.datesBetween"></a>
+
+### utils.datesBetween(start, end) ⇒ <code>Array</code>
+Get all dates between two dates
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+**Returns**: <code>Array</code> - all dates beetween start and end  
+**Params**
+
+- start <code>Date</code> - start date
+- end <code>Date</code> - end date
 
 
 * * *
