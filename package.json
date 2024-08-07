@@ -1,6 +1,6 @@
 {
   "name": "@pangenerator/utils",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A collection of functions and classes for creative coding and interactive projects",
   "main": "utils.js",
   "scripts": {
