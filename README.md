@@ -1,5 +1,5 @@
 [![Version](http://img.shields.io/npm/v/@pangenerator/utils.svg)](https://www.npmjs.org/package/@pangenerator/utils)
-[![Tests](https://img.shields.io/github/actions/workflow/status/panGenerator/utils/tests.yml)](https://github.com/panGenerator/utils)
+[![Tests](https://img.shields.io/github/actions/workflow/status/panGenerator/utils/tests.yml?label=tests)](https://github.com/panGenerator/utils)
 
 ## Modules
 
@@ -801,4 +801,4 @@ Convert string to camel case
 * * *
 
 
-[panGenerator](https://pangenerator.com) 2024
+Copyright &copy; 2024 [panGenerator](https://pangenerator.com)
