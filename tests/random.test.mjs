@@ -16,6 +16,7 @@ describe('Random', () => {
   describe('randomDir()', function () {
     it('should generate random direction as a number', function () {
       const r = random.randomDir()
+      expect(Math.abs(r)).toBe(1)
       expect(typeof r).toBe('number')
     })
     it('should generate random direction with absolute value of 1', function () {
